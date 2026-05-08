@@ -38,7 +38,7 @@ Add-ons (not visible on landing, sold post-checkout):
 
 | Objection | Response |
 |-----------|----------|
-| "Synthetic data isn't real data." | Correct. We don't pretend it is. Mintset is best for cold-start, eval, edge-case augmentation, and privacy-safe clones. The manifest tells you exactly where the dataset can be trusted. |
+| "Synthetic data isn't real data." | Correct. We don't pretend it is. SynthTable is best for cold-start, eval, edge-case augmentation, and privacy-safe clones. The manifest tells you exactly where the dataset can be trusted. |
 | "How do I know your model isn't poisoned?" | Manifest includes the model commit hash, the seed, the Merkle root, and an ed25519 signature. You can verify offline with our public key. |
 | "We need wire / EUR / GBP." | One email and we cut a manual invoice. Crypto isn't required; it's just the default. |
 | "We can't share our schema with a third party." | We sign a mutual NDA before any run; schemas are scoped per-account; we never train downstream models on customer schemas. |

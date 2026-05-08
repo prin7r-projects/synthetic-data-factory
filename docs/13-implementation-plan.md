@@ -7,13 +7,13 @@
 > **Live:** https://synthetic-data-factory.prin7r.com (landing live; API stubbed)
 > **Deploy:** storage-contabo `/opt/prin7r-deploys/synthetic-data-factory`
 > **Secrets:** ANTHROPIC_API_KEY, ZAI_API_KEY (GLM), NOWPAYMENTS_API_KEY, NOWPAYMENTS_IPN_SECRET,
-> POSTMARK_SERVER_TOKEN, B2_KEY_ID, B2_APP_KEY, MINTSET_KEY_PASSPHRASE, NATS_TOKEN, DATABASE_URL.
+> POSTMARK_SERVER_TOKEN, B2_KEY_ID, B2_APP_KEY, SYNTHTABLE_KEY_PASSPHRASE, NATS_TOKEN, DATABASE_URL.
 > **Tone:** "synthetic data, declared." Auditable. Industrious. Unsentimental. See `01-brand-identity.md` §Voice.
 
 ## Phase 0 — Wave 2 landing + payment surface (DONE)
 
 - ✅ Public landing, vertical pages, pricing, NOWPayments invoice round-trip, branded 503,
-  screenshots in `/docs/screenshots/`. (Mintset rebrand landed 2026-05-08; canvas swap to
+  screenshots in `/docs/screenshots/`. (SynthTable rebrand landed 2026-05-08; canvas swap to
   hyperstudio dark direction is a Phase 6 polish task per `HANDOFF.md`.)
 
 ## Phase 1 — apps/api scaffold (Bun + Hono) + Postgres + NATS
@@ -24,16 +24,16 @@
   1. New `apps/api` directory with Bun + Hono. Routes: `/v1/sandbox`, `/v1/runs`, `/v1/manifests`,
      `/v1/keys`, `/healthz`.
   2. Drizzle schema for the data model in `12-technical-specification.md` §2. Migration applied.
-  3. NATS JetStream sidecar in compose. Topic `mintset.runs.queued`.
+  3. NATS JetStream sidecar in compose. Topic `synthtable.runs.queued`.
   4. Stub forge worker that subscribes, generates 100 fake rows for legal-text, persists, marks
      run `status=finished`. No judge yet.
-  5. `mintset` CLI (Bun binary) with `run`, `verify`, `manifest`.
+  5. `synthtable` CLI (Bun binary) with `run`, `verify`, `manifest`.
 - **Deps.** Phase 0.
 - **Effort.** 200 tool-uses, 10h.
 - **DoD.**
-  - `mintset run examples/legal-text-100.yaml --sandbox` returns 100 rows + a stub manifest within
+  - `synthtable run examples/legal-text-100.yaml --sandbox` returns 100 rows + a stub manifest within
     60s.
-  - `mintset verify <manifest>` returns `valid: true` against the stub key.
+  - `synthtable verify <manifest>` returns `valid: true` against the stub key.
   - `apps/api` Docker image builds reproducibly.
 - **Hand-off.** Bun + Hono + Drizzle stack matches `lead-enrichment` (Triangulate); reuse patterns
   from that repo's `apps/api`.
@@ -47,7 +47,7 @@
      Stream Claude responses; persist rows.
   3. Stub adjudicator: regex + length checks; assigns confidence 0.7 default; marks reject if
      prompt-injection flags fire.
-  4. Run progress events on `mintset.runs.progress` topic.
+  4. Run progress events on `synthtable.runs.progress` topic.
 - **Deps.** Phase 1.
 - **Effort.** 200 tool-uses, 10h.
 - **DoD.**
@@ -57,14 +57,14 @@
 
 ## Phase 3 — Real adjudicator + manifest signing
 
-- **Goal.** Judge model gates row acceptance. Manifests are signed Ed25519. `mintset verify` works
+- **Goal.** Judge model gates row acceptance. Manifests are signed Ed25519. `synthtable verify` works
   end-to-end.
 - **Tasks.**
   1. Adjudicator uses Claude 4.7 with a judge prompt. Confidence + per-criterion notes.
   2. Rejection logic: confidence < 0.6 → reject; 0.6–0.7 → flag for operator queue.
-  3. Stamp service: sign manifest with Ed25519 key (`MINTSET_KEY_PASSPHRASE`). Compute Merkle root
+  3. Stamp service: sign manifest with Ed25519 key (`SYNTHTABLE_KEY_PASSPHRASE`). Compute Merkle root
      over compressed payload bytes.
-  4. `pki.mintset.prin7r.com/v1/keys` serves public keys (active + rotated).
+  4. `pki.synthtable.prin7r.com/v1/keys` serves public keys (active + rotated).
 - **Deps.** Phase 2.
 - **Effort.** 180 tool-uses, 9h.
 - **DoD.**
@@ -76,7 +76,7 @@
 
 - **Goal.** Customers receive `run.*` events via signed webhooks; can manage api keys + see runs.
 - **Tasks.**
-  1. Webhook dispatcher worker: signs `x-mintset-sig`, retries with backoff (1m, 5m, 30m, 4h, 24h).
+  1. Webhook dispatcher worker: signs `x-synthtable-sig`, retries with backoff (1m, 5m, 30m, 4h, 24h).
   2. Per-customer webhook secret rotation.
   3. Customer dashboard (`apps/app` Wave 3 deferred; for Phase 4, a thin Next.js page on
      `apps/landing/dashboard` is acceptable as a stop-gap).

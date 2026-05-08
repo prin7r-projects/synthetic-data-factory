@@ -56,7 +56,7 @@ what auditors actually need.
 
 ## Head-to-head with named alternatives
 
-| Need                              | Generic synthetic-data platform | Mintset |
+| Need                              | Generic synthetic-data platform | SynthTable |
 |-----------------------------------|----------------------------------|-----------|
 | Schema-as-input                   | Often; many use a GUI            | Always; YAML/JSON; lints constraints |
 | Reproducibility manifest          | Out-of-band; PDF report          | First-class; signed; in every dataset |
@@ -68,7 +68,7 @@ what auditors actually need.
 | Open-source SDK                   | Sometimes                         | Yes (MIT, in the same monorepo) |
 | Per-record drop                   | Re-run dataset                    | Drop with a row proof |
 
-## What's *not* a Mintset problem
+## What's *not* a SynthTable problem
 
 We are not trying to be:
 

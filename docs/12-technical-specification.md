@@ -1,6 +1,6 @@
 # 12 · Technical specification
 
-> Mintset = compiler + run queue + forge workers + adjudicator + stamp service. Wave 2 ships the
+> SynthTable = compiler + run queue + forge workers + adjudicator + stamp service. Wave 2 ships the
 > landing + payment surface; Wave 3 ships the runtime. This doc is the implementer's contract.
 
 ## 1. Architecture overview
@@ -143,7 +143,7 @@ Indexes: `users.email` UNIQUE, `users.api_key_hash` UNIQUE, `runs.status`, `runs
 
 | Header | Value |
 |---|---|
-| `x-mintset-sig` | `t=<unix_ms>,v1=<HMAC-SHA256(secret, t + "." + body)>` |
+| `x-synthtable-sig` | `t=<unix_ms>,v1=<HMAC-SHA256(secret, t + "." + body)>` |
 | Body events | `run.queued`, `run.progress`, `run.paused`, `run.finished`, `run.failed`, `run.refunded` |
 
 ## 4. Integrations
@@ -161,7 +161,7 @@ Indexes: `users.email` UNIQUE, `users.api_key_hash` UNIQUE, `runs.status`, `runs
 
 - **Postgres 16** for `users/runs/rows/manifests/keys/events`. `rows` partitioned by `run_id` for
   large runs.
-- **B2** for the final dataset jsonl (sometimes parquet) under `prin7r-mintset/datasets/<run_id>/...`.
+- **B2** for the final dataset jsonl (sometimes parquet) under `prin7r-synthtable/datasets/<run_id>/...`.
   Lifecycle: 90-day hot, 1-year archive, then cold tier.
 - **Provenance ledger** is an append-only Postgres table + a daily B2 export of the day's events.
   Hash-chained to the previous day.
@@ -180,7 +180,7 @@ Indexes: `users.email` UNIQUE, `users.api_key_hash` UNIQUE, `runs.status`, `runs
 - Secrets in `.env`; `direnv` on operator workstations.
 - Rate limits: `/v1/sandbox` 5/day/user, `/v1/runs` 50/hour/user, `/v1/keys` 60/min/IP.
 - Manifest-signing keys are Ed25519, generated in-process at first boot, persisted encrypted with
-  a `MINTSET_KEY_PASSPHRASE` env var. Rotated quarterly; old keys retained for verification.
+  a `SYNTHTABLE_KEY_PASSPHRASE` env var. Rotated quarterly; old keys retained for verification.
 - IPN HMAC-SHA512 validation; inbound webhooks idempotent on `(payment_id, payment_status)`.
 - Customer webhook secrets stored encrypted with libsodium per-row.
 - Audit log on every manifest sign, every refund, every key rotation.
@@ -188,8 +188,8 @@ Indexes: `users.email` UNIQUE, `users.api_key_hash` UNIQUE, `runs.status`, `runs
 ## 8. Observability
 
 - Pino JSON logs → Loki on storage-contabo (Wave 3).
-- Metrics: `mintset.run.duration_ms`, `mintset.judge.confidence_p50`, `mintset.webhook.delivery_ms`,
-  `mintset.queue.depth`.
+- Metrics: `synthtable.run.duration_ms`, `synthtable.judge.confidence_p50`, `synthtable.webhook.delivery_ms`,
+  `synthtable.queue.depth`.
 - Traces: NATS message headers carry `traceparent`.
 - Alerts: queue depth > 200 for 1h; webhook delivery failures > 5/hour; judge confidence p50 < 0.65
   for 24h.

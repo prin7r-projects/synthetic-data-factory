@@ -1,17 +1,17 @@
-# Mintset — DESIGN.md
+# SynthTable — DESIGN.md
 
 > Canonical design + style guide for `synthetic-data-factory`.
 > Owned by Chief of Design. Synced with `apps/landing/tailwind.config.ts`,
 > `apps/landing/app/globals.css`, and the live deployment at
-> https://synthetic-data-factory.prin7r.com.
+> https://synthtable.com.
 
 ---
 
 ## 1. Product and audience
 
-**Product.** Mintset generates labeled synthetic datasets for ML and AI teams.
+**Product.** SynthTable generates labeled synthetic datasets for ML and AI teams.
 The customer declares a schema (records, types, constraints), a bias profile
-(distributions, edge-case densities), and a volume — Mintset returns a
+(distributions, edge-case densities), and a volume — SynthTable returns a
 labeled dataset alongside a signed reproducibility manifest (seed, model
 versions, lineage hash, constraint pass/fail, bias drift in σ).
 
@@ -34,7 +34,7 @@ red-team researchers who want adversarial corpora at zero spend.
 
 ## 2. Visual positioning
 
-Mintset is a *precision foundry on graphite*. Operator-grade dark canvas with
+SynthTable is a *precision foundry on graphite*. Operator-grade dark canvas with
 amber-ember accents. The reference is Hyperstudio's monochrome terminal: stark
 graphite #0E1013 page, Polar-equivalent sodium #FAFAF8 ink, ember-orange
 exclusively for primary action and heat indicators. Not "AI-data purple" —
@@ -247,7 +247,7 @@ Quality gates (must pass before "done"):
 - [x] Keyboard focus visible on every interactive element
 - [x] All images have meaningful or `aria-hidden` alt
 - [x] No `Lorem ipsum`; no `TODO` strings shipped
-- [x] `curl -sI https://synthetic-data-factory.prin7r.com` → HTTP/2 200
+- [x] `curl -sI https://synthetic-data-factory.prin7r.com` → HTTP/2 200 (alias for synthtable.com)
 - [x] NOWPayments CTA produces a real unpaid hosted invoice (verified)
 
 ## 13. Screenshots and verification artifacts
@@ -275,6 +275,16 @@ brand patterns, abstract "neural net" hero compositions.
 
 ## 15. Changelog
 
+- **2026-05-08 rebrand — Mintset → SynthTable** — Second-pass FAIL rebrand.
+  SERP for "Mintset synthetic data" was dominated by MINT-1T (1-trillion-token
+  multimodal dataset on Hugging Face / arXiv) — adjacent collision in ML
+  synthetic-data territory. New brand is **SynthTable** at `synthtable.com`
+  (verified AVAILABLE). Monogram updated `Ms` → `St`. Container name updated
+  `mintset-landing` → `synthtable-landing`. Env var renamed
+  `MINTSET_API_KEY` → `SYNTHTABLE_API_KEY`. SDK package renamed
+  `@mintset/sdk` → `@synthtable/sdk`. Foundry/precision-instrument metaphor
+  vocabulary preserved across brand refs (graphite + ember + sodium tokens
+  unchanged; `foundry-text` model-name strings + manifest keys preserved).
 - **2026-05-08 design refresh — hyperstudio dark canvas pivot** — Wave 2 design
   refresh. Body canvas flipped from sodium #FAFAF8 (cream) to graphite #0E1013
   (dark forge floor). Cards lifted to slag #1A1D22; emphasized cards / RunPhases

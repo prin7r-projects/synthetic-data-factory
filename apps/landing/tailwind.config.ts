@@ -1,8 +1,8 @@
 import type { Config } from "tailwindcss";
 
 /**
- * [FOUNDRY7_TAILWIND] Locked tokens for the synthetic-data-factory landing.
- * Source of truth for the Mintset palette + type pair. Mirrored in
+ * [SYNTHTABLE_TAILWIND] Locked tokens for the synthetic-data-factory landing.
+ * Source of truth for the SynthTable palette + type pair. Mirrored in
  * `app/globals.css` and documented in /DESIGN.md sections 4-6.
  *
  * Brand: precision foundry / steel mill / laboratory
@@ -81,7 +81,7 @@ const config: Config = {
         flow: "flow 1.8s linear infinite"
       },
       backgroundImage: {
-        // [MINTSET_DARK_PIVOT 2026-05-08] Stripe with slag (#1A1D22) instead of sodium —
+        // [SYNTHTABLE_DARK_PIVOT 2026-05-08] Stripe with slag (#1A1D22) instead of sodium —
         // softer second stop that still reads against the graphite page but doesn't
         // glare on the dark canvas. Was ember+sodium; now ember+slag.
         "tape-orange":

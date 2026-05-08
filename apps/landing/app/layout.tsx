@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mintset — synthetic dataset factory · schema in, dataset out",
+  title: "SynthTable — synthetic dataset factory · schema in, dataset out",
   description:
     "Declare your schema, constraints, and bias profile. Receive a labeled synthetic dataset with provenance, audit log, and reproducibility manifest. Built for ML engineers, eval leads, applied scientists.",
-  metadataBase: new URL("https://synthetic-data-factory.prin7r.com"),
+  metadataBase: new URL("https://synthtable.com"),
   openGraph: {
-    title: "Mintset — synthetic dataset factory",
+    title: "SynthTable — synthetic dataset factory",
     description:
       "Schema in, labeled dataset out. Auditable, reproducible synthetic data for training and evaluation.",
-    url: "https://synthetic-data-factory.prin7r.com",
-    siteName: "Mintset",
+    url: "https://synthtable.com",
+    siteName: "SynthTable",
     type: "website"
   },
   icons: {

@@ -71,15 +71,15 @@ function Masthead() {
   return (
     <header
       className="sticky top-0 z-30 bg-graphite/85 backdrop-blur border-b border-sodium/10 shadow-masthead"
-      aria-label="Mintset site header"
+      aria-label="SynthTable site header"
     >
       <div className="container max-w-prose flex items-center justify-between h-14">
         <a href="#hero" className="flex items-center gap-2.5 group">
           <span aria-hidden className="font-mono text-[12px] tracking-stencil uppercase text-ash">
-            Ms
+            St
           </span>
           <span className="font-display text-[19px] font-semibold tracking-tightest">
-            Mintset
+            SynthTable
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-7 text-[14px]">
@@ -102,7 +102,7 @@ function Masthead() {
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline-flex items-center gap-2 font-mono text-[11px] tracking-stencil uppercase text-sodium/70">
             <span className="dot-live" aria-hidden></span>
-            <span>MINTSET ONLINE</span>
+            <span>SYNTHTABLE ONLINE</span>
           </span>
           <ButtonAnchor href="#pricing" size="sm" variant="default">
             Start a run
@@ -408,7 +408,7 @@ function UseCases() {
             </h2>
           </div>
           <p className="md:col-span-4 text-sodium/70 text-[15.5px] leading-snug">
-            Every Mintset run starts as a schema and ends as a signed dataset. The
+            Every SynthTable run starts as a schema and ends as a signed dataset. The
             shape changes; the rigor doesn&apos;t.
           </p>
         </header>
@@ -464,7 +464,7 @@ function Manifest() {
             </h2>
           </div>
           <p className="md:col-span-5 text-sodium/75 text-[15.5px] leading-snug">
-            Synthetic data without a manifest is gossip. Mintset ships every run with a
+            Synthetic data without a manifest is gossip. SynthTable ships every run with a
             signed reproducibility receipt — schema, seed, model versions, bias profile,
             constraints, and a row-level provenance hash chain.
           </p>
@@ -595,8 +595,8 @@ function ApiQuickstart() {
           <CodeBlock
             label="curl · create a run"
             language="shell"
-            code={`curl https://api.synthetic-data-factory.prin7r.com/v1/runs \\
-  -H "Authorization: Bearer $MINTSET_API_KEY" \\
+            code={`curl https://api.synthtable.com/v1/runs \\
+  -H "Authorization: Bearer $SYNTHTABLE_API_KEY" \\
   -H "Content-Type: application/yaml" \\
   --data-binary @schema.foundry.yml
 
@@ -611,9 +611,9 @@ function ApiQuickstart() {
           <CodeBlock
             label="python · poll & download"
             language="python"
-            code={`from mintset import Mintset
+            code={`from synthtable import SynthTable
 
-f = Mintset(api_key=os.environ["MINTSET_API_KEY"])
+f = SynthTable(api_key=os.environ["SYNTHTABLE_API_KEY"])
 run = f.runs.create_from_file("schema.foundry.yml")
 
 for event in run.stream():
@@ -626,9 +626,9 @@ print(dataset.manifest.chain_root)`}
           <CodeBlock
             label="node · ergonomic SDK"
             language="ts"
-            code={`import { Mintset } from "@mintset/sdk";
+            code={`import { SynthTable } from "@synthtable/sdk";
 
-const f = new Mintset({ apiKey: process.env.MINTSET_API_KEY });
+const f = new SynthTable({ apiKey: process.env.SYNTHTABLE_API_KEY });
 const run = await f.runs.create({ schemaPath: "./schema.foundry.yml" });
 
 for await (const ev of run.stream()) {
@@ -768,7 +768,7 @@ function Provenance() {
             Every row, every reason.
           </h2>
           <p className="mt-5 text-[16px] text-sodium/70 leading-snug">
-            Mintset keeps a per-row Merkle proof linking each record to its seed,
+            SynthTable keeps a per-row Merkle proof linking each record to its seed,
             schema version, and adjudication. When a customer or regulator says
             &quot;why was this record in your training data?&quot; you have an answer
             with a hash on it.
@@ -827,7 +827,7 @@ function Faq() {
     {
       q: "Are the datasets actually useful for training?",
       a:
-        "Yes — within the bounds you declare. Mintset is best for cold-start, eval, edge-case augmentation, and privacy-safe clones. We are honest about limits: synthetic data is not a substitute for representative real-world data when subtle distribution shifts matter. The manifest tells you exactly where the dataset can be trusted."
+        "Yes — within the bounds you declare. SynthTable is best for cold-start, eval, edge-case augmentation, and privacy-safe clones. We are honest about limits: synthetic data is not a substitute for representative real-world data when subtle distribution shifts matter. The manifest tells you exactly where the dataset can be trusted."
     },
     {
       q: "What model do you generate from?",
@@ -867,7 +867,7 @@ function Faq() {
     {
       q: "How is this different from Tonic / Mostly / Gretel / etc.?",
       a:
-        "Mintset is opinionated about three things: (1) reproducibility manifests as a first-class artifact, (2) row-level provenance instead of dataset-level provenance, and (3) vertical specialists rather than one model for everything. We are smaller, narrower, and more auditable. Read /docs/04-pain-points.md for the head-to-head."
+        "SynthTable is opinionated about three things: (1) reproducibility manifests as a first-class artifact, (2) row-level provenance instead of dataset-level provenance, and (3) vertical specialists rather than one model for everything. We are smaller, narrower, and more auditable. Read /docs/04-pain-points.md for the head-to-head."
     }
   ];
   return (
@@ -921,11 +921,11 @@ function Footer() {
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             <span className="font-display text-3xl font-semibold tracking-tightest">
-              Mintset
+              SynthTable
             </span>
             <span className="chip border-sodium/20 text-sodium/70">
               <span className="dot-live" aria-hidden></span>
-              MINTSET ONLINE
+              SYNTHTABLE ONLINE
             </span>
           </div>
           <p className="mt-5 text-[15px] leading-snug text-sodium/70 max-w-[40ch]">
@@ -980,7 +980,7 @@ function Footer() {
                 href="https://github.com/prin7r-projects/synthetic-data-factory/blob/main/docs/04-pain-points.md"
                 className="hover:text-ember"
               >
-                Why Mintset
+                Why SynthTable
               </a>
             </li>
             <li>
@@ -1023,7 +1023,7 @@ function Footer() {
       </div>
 
       <div className="container max-w-prose mt-14 pt-6 border-t border-sodium/15 flex flex-wrap items-center justify-between gap-4 text-[12px] font-mono tracking-stencil uppercase text-sodium/55">
-        <span>© 2026 Prin7r — Mintset. MIT-licensed source.</span>
+        <span>© 2026 Prin7r — SynthTable. MIT-licensed source.</span>
         <span>BUILD · 2026·05·08 · v1.0</span>
       </div>
     </footer>

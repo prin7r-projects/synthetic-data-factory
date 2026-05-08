@@ -11,7 +11,7 @@
 | LinkedIn (regulated verticals) | 10% | 15% | Elena (Persona 3) lives here. Vertical case studies. |
 | Conference / community talks (NeurIPS, ACL, ICLR, MLOps.community, EleutherAI) | 10% | 10% | The calling card. Sponsor a workshop on reproducibility. |
 | Direct outbound (sales-led) for Enterprise | 5% | 5% | Hand-built lists in healthcare networks, law firms, fintechs. |
-| Partnerships with eval frameworks (Inspect, Promptfoo, Weave, Phoenix) | — | tracked | Co-launch templates: "Eval set + Mintset generator in a pull request." |
+| Partnerships with eval frameworks (Inspect, Promptfoo, Weave, Phoenix) | — | tracked | Co-launch templates: "Eval set + SynthTable generator in a pull request." |
 
 ## Why each channel fits
 
@@ -22,7 +22,7 @@ aim for 1 evergreen thread/week + 2 reply-engagement passes/week from the
 founder account. KPI: 3 inbound demo requests/week from X by Wave-3 end.
 
 ### Hacker News
-A "Show HN: Mintset — synthetic datasets with row-level provenance" launch
+A "Show HN: SynthTable — synthetic datasets with row-level provenance" launch
 hits Ravi's exact frustration. Best done after we have at least 3 case
 studies and the pitch deck (`/docs/10-pitch-deck.md`) reviewed. KPI: front
 page once → 200+ Bench-tier signups/week for that week, ~10% conversion to

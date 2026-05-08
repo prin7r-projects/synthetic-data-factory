@@ -1,6 +1,6 @@
 /**
- * [FOUNDRY7_CARD] Vendored from shadcn/ui (Card) and re-themed against the
- * Mintset tokens. Square edges, hairline border, no shadow. The repo owns
+ * [SYNTHTABLE_CARD] Vendored from shadcn/ui (Card) and re-themed against the
+ * SynthTable tokens. Square edges, hairline border, no shadow. The repo owns
  * this source per the Prin7r ShadCN-first baseline (DESIGN.md §3).
  */
 
@@ -15,7 +15,7 @@ export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
     <div
       ref={ref}
       className={cn(
-        // [MINTSET_DARK_PIVOT 2026-05-08] slag surface on graphite canvas.
+        // [SYNTHTABLE_DARK_PIVOT 2026-05-08] slag surface on graphite canvas.
         "bg-slag border border-sodium/12 rounded-none flex flex-col text-sodium",
         className
       )}

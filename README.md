@@ -1,10 +1,10 @@
-# Mintset — Synthetic Data Factory
+# SynthTable — Synthetic Data Factory
 
 > Schema in. Dataset out. On-demand synthetic data for ML teams,
 > with provenance, audit log, and a reproducibility manifest you can
 > hand to a regulator.
 
-- **Site**: https://synthetic-data-factory.prin7r.com
+- **Site**: https://synthtable.com (alias https://synthetic-data-factory.prin7r.com)
 - **Notion opportunity**: [Synthetic data and datasets factory](https://www.notion.so/3543ceec26198128adc0dd52e37de741)
 - **Stack**: Next.js 15 (App Router) + Tailwind + ShadCN-vendored primitives → SaaS app stub at `apps/app/` for a future wave
 - **Payments**: NOWPayments hosted invoice (USDT/USDC + fiat-partner card on-ramp), HMAC-SHA512 IPN
@@ -49,8 +49,8 @@
 
 ## Screenshots
 
-![Mintset landing — desktop](docs/screenshots/landing-desktop.png)
-![Mintset landing — mobile](docs/screenshots/landing-mobile.png)
+![SynthTable landing — desktop](docs/screenshots/landing-desktop.png)
+![SynthTable landing — mobile](docs/screenshots/landing-mobile.png)
 
 ## Development
 
@@ -79,7 +79,7 @@ compose file pulls those via `env_file: .env`.
 
 ## Brand identity (one-line)
 
-**Mintset** is a *precision foundry* aesthetic: graphite + sodium-white +
+**SynthTable** is a *precision foundry* aesthetic: graphite + sodium-white +
 carbon-orange ember + signal-yellow accents, Inter Display + JetBrains Mono.
 Every page treats a schema declaration like the hero artifact it is.
 

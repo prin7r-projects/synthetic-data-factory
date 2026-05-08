@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.landing
-    image: mintset-landing:latest
-    container_name: mintset-landing
+    image: synthtable-landing:latest
+    container_name: synthtable-landing
     restart: unless-stopped
     expose:
       - "3000"

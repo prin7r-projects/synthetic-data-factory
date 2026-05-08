@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* [MINTSET_GLOBALS]
+/* [SYNTHTABLE_GLOBALS]
  * Steel-mill / precision-foundry palette and type system, locked.
  * Mirrors tailwind.config.ts and DESIGN.md sections 4-6.
  */
@@ -25,7 +25,7 @@
   }
 
   html, body {
-    /* [MINTSET_DARK_PIVOT 2026-05-08] Hyperstudio dark canvas — graphite forge floor.
+    /* [SYNTHTABLE_DARK_PIVOT 2026-05-08] Hyperstudio dark canvas — graphite forge floor.
      * Was: var(--color-sodium) cream. Now: var(--color-graphite) #0e1013.
      * Surface ramp: graphite (page) → slag (lifted) → billet (highest). */
     background: var(--color-graphite);
