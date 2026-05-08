@@ -102,7 +102,7 @@ function Masthead() {
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline-flex items-center gap-2 font-mono text-[11px] tracking-stencil uppercase text-ink-2">
             <span className="dot-live" aria-hidden></span>
-            <span>FOUNDRY ONLINE</span>
+            <span>MINTSET ONLINE</span>
           </span>
           <ButtonAnchor href="#pricing" size="sm" variant="default">
             Start a run
