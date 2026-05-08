@@ -16,8 +16,10 @@ const baseClasses =
   "inline-flex items-center justify-center gap-2 font-sans font-medium leading-none transition-colors duration-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember disabled:opacity-50 disabled:cursor-not-allowed select-none";
 
 const variantClasses: Record<ButtonVariant, string> = {
-  default: "bg-graphite text-sodium border border-graphite hover:bg-ember hover:border-ember",
-  ghost: "bg-transparent text-graphite border border-graphite hover:bg-graphite hover:text-sodium",
+  // [MINTSET_DARK_PIVOT 2026-05-08] Re-tuned for graphite canvas.
+  // default: light-on-dark (sodium fill, graphite text). ghost: hairline outline on dark.
+  default: "bg-sodium text-graphite border border-sodium hover:bg-ember hover:border-ember hover:text-sodium",
+  ghost: "bg-transparent text-sodium border border-sodium/35 hover:bg-sodium hover:text-graphite",
   ember: "bg-ember text-sodium border border-ember hover:bg-ember-2 hover:border-ember-2",
   "outline-light": "bg-transparent text-sodium border border-sodium/40 hover:border-ember hover:text-ember"
 };

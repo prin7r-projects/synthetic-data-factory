@@ -15,7 +15,8 @@ export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
     <div
       ref={ref}
       className={cn(
-        "bg-sodium border border-graphite/15 rounded-none flex flex-col text-graphite",
+        // [MINTSET_DARK_PIVOT 2026-05-08] slag surface on graphite canvas.
+        "bg-slag border border-sodium/12 rounded-none flex flex-col text-sodium",
         className
       )}
       {...props}
@@ -45,7 +46,7 @@ export const CardTitle = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
 
 export const CardDescription = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   function CardDescription({ className, ...props }, ref) {
-    return <div ref={ref} className={cn("text-ink-2 text-[15px]", className)} {...props} />;
+    return <div ref={ref} className={cn("text-sodium/70 text-[15px]", className)} {...props} />;
   }
 );
 

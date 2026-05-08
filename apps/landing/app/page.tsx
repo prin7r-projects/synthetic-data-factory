@@ -21,7 +21,7 @@ import { PricingCta } from "@/app/pricing-cta";
 
 export default function HomePage() {
   return (
-    <main className="bg-sodium text-graphite">
+    <main className="bg-graphite text-sodium">
       <Masthead />
       <Hero />
       <OperatorMarquee />
@@ -31,7 +31,7 @@ export default function HomePage() {
       <RunPhases />
       <section
         id="pricing"
-        className="border-t border-graphite/15 py-20 md:py-28"
+        className="border-t border-sodium/12 py-20 md:py-28"
       >
         <div className="container max-w-prose">
           <header className="grid md:grid-cols-12 gap-6 items-end mb-12">
@@ -41,7 +41,7 @@ export default function HomePage() {
                 Three credit shapes. One foundry.
               </h2>
             </div>
-            <p className="md:col-span-5 text-ink-2 text-[16px] leading-snug">
+            <p className="md:col-span-5 text-sodium/70 text-[16px] leading-snug">
               Buy a single bench run, a monthly production credit, or a quarterly managed
               program. Pay in USDT or USDC — the invoice is hosted by NOWPayments and the
               fiat partner card on-ramp is enabled.
@@ -70,7 +70,7 @@ export default function HomePage() {
 function Masthead() {
   return (
     <header
-      className="sticky top-0 z-30 bg-sodium/95 backdrop-blur border-b border-graphite/12 shadow-masthead"
+      className="sticky top-0 z-30 bg-graphite/85 backdrop-blur border-b border-sodium/10 shadow-masthead"
       aria-label="Mintset site header"
     >
       <div className="container max-w-prose flex items-center justify-between h-14">
@@ -100,7 +100,7 @@ function Masthead() {
           </a>
         </nav>
         <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-flex items-center gap-2 font-mono text-[11px] tracking-stencil uppercase text-ink-2">
+          <span className="hidden sm:inline-flex items-center gap-2 font-mono text-[11px] tracking-stencil uppercase text-sodium/70">
             <span className="dot-live" aria-hidden></span>
             <span>MINTSET ONLINE</span>
           </span>
@@ -121,7 +121,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden border-b border-graphite/12"
+      className="relative overflow-hidden border-b border-sodium/10"
       aria-label="Hero"
     >
       <div className="absolute inset-0 grid-foundry pointer-events-none" aria-hidden></div>
@@ -130,7 +130,7 @@ function Hero() {
           {/* Left: copy */}
           <div className="md:col-span-6">
             <div className="flex items-center gap-3 mb-6">
-              <span className="chip border-graphite/40 text-graphite">
+              <span className="chip border-sodium/25 text-sodium">
                 <span className="dot-live" aria-hidden></span>
                 <span>FOUNDRY/7 · BUILD&nbsp;0507·26</span>
               </span>
@@ -143,13 +143,13 @@ function Hero() {
               <br />
               <span className="text-ember">Dataset out.</span>
             </h1>
-            <p className="mt-7 text-[18px] leading-snug text-ink-2 max-w-[44ch]">
+            <p className="mt-7 text-[18px] leading-snug text-sodium/70 max-w-[44ch]">
               On-demand synthetic data for ML teams. Declare the schema, the constraints,
               and the bias profile you want. Receive a labeled dataset with provenance,
               audit log, and a reproducibility manifest you can hand to a regulator.
             </p>
 
-            <ul className="mt-7 grid grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-ink-2">
+            <ul className="mt-7 grid grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-sodium/70">
               <li className="flex items-baseline gap-2">
                 <span className="text-ember font-mono text-xs">01</span>
                 <span>Cold-start training sets</span>
@@ -253,14 +253,14 @@ reproducibility:
       {/* Arrow / heat band */}
       <div className="my-3 flex items-center gap-3" aria-hidden>
         <div className="flex-1 h-2 bg-tape-orange opacity-90"></div>
-        <span className="font-mono text-[11px] tracking-stencil uppercase text-ink-2">
+        <span className="font-mono text-[11px] tracking-stencil uppercase text-sodium/70">
           GENERATING · 50,000 rows · seed 0x4f5c
         </span>
         <div className="flex-1 h-2 bg-tape-orange opacity-90"></div>
       </div>
 
       {/* Output sample row */}
-      <figure className="border border-graphite/20 bg-sodium-2 p-5 md:p-6 relative">
+      <figure className="border border-sodium/15 bg-slag p-5 md:p-6 relative">
         <figcaption className="flex items-center justify-between mb-3">
           <span className="font-mono text-[11px] tracking-stencil uppercase text-ash">
             Output · row 14,492 / 50,000 · jsonl
@@ -269,7 +269,7 @@ reproducibility:
             ✓ MANIFEST: 0x8c4f9aa1
           </span>
         </figcaption>
-        <pre className="font-mono text-[12.5px] leading-[1.6] text-graphite overflow-x-auto">
+        <pre className="font-mono text-[12.5px] leading-[1.6] text-sodium overflow-x-auto">
 {`{
   "ticket_id":   "0c9e2a4b-7e54-4f2a-9e01-2b8a4...",
   "channel":     "voice_transcript",
@@ -293,17 +293,17 @@ reproducibility:
 
       {/* Output meta strip */}
       <div className="mt-3 grid grid-cols-3 gap-3 font-mono text-[11px] tracking-stencil uppercase">
-        <div className="border border-graphite/15 bg-sodium px-3 py-2">
+        <div className="border border-sodium/12 bg-slag px-3 py-2">
           <div className="text-ash">RECORDS</div>
-          <div className="text-graphite text-base mt-0.5 tabular">50,000</div>
+          <div className="text-sodium text-base mt-0.5 tabular">50,000</div>
         </div>
-        <div className="border border-graphite/15 bg-sodium px-3 py-2">
+        <div className="border border-sodium/12 bg-slag px-3 py-2">
           <div className="text-ash">CONSTRAINTS PASSED</div>
           <div className="text-weld text-base mt-0.5 tabular">3 / 3 ✓</div>
         </div>
-        <div className="border border-graphite/15 bg-sodium px-3 py-2">
+        <div className="border border-sodium/12 bg-slag px-3 py-2">
           <div className="text-ash">BIAS DRIFT</div>
-          <div className="text-graphite text-base mt-0.5 tabular">0.014 σ</div>
+          <div className="text-sodium text-base mt-0.5 tabular">0.014 σ</div>
         </div>
       </div>
     </div>
@@ -330,7 +330,7 @@ function OperatorMarquee() {
     "EDU AI"
   ];
   return (
-    <section className="bg-graphite text-sodium border-y border-graphite py-3 overflow-hidden">
+    <section className="bg-slag text-sodium border-y border-sodium/10 py-3 overflow-hidden">
       <div className="container max-w-[1400px] flex flex-wrap items-center gap-x-8 gap-y-1 font-mono text-[11px] tracking-stencil uppercase">
         {lines.map((l, i) => (
           <span key={l} className={i === 0 ? "text-ember" : "text-sodium/70"}>
@@ -397,7 +397,7 @@ function UseCases() {
   return (
     <section
       id="use-cases"
-      className="py-20 md:py-28 border-b border-graphite/12 grid-foundry"
+      className="py-20 md:py-28 border-b border-sodium/10 grid-foundry"
     >
       <div className="container max-w-prose">
         <header className="grid md:grid-cols-12 gap-6 items-end mb-12">
@@ -407,7 +407,7 @@ function UseCases() {
               Four shapes of dataset, one foundry floor.
             </h2>
           </div>
-          <p className="md:col-span-4 text-ink-2 text-[15.5px] leading-snug">
+          <p className="md:col-span-4 text-sodium/70 text-[15.5px] leading-snug">
             Every Mintset run starts as a schema and ends as a signed dataset. The
             shape changes; the rigor doesn&apos;t.
           </p>
@@ -417,7 +417,7 @@ function UseCases() {
           {cases.map((c) => (
             <article
               key={c.tag}
-              className="border border-graphite/20 bg-sodium p-7 flex flex-col"
+              className="border border-sodium/15 bg-slag p-7 flex flex-col"
             >
               <span className="font-mono text-[11px] tracking-stencil uppercase text-ember">
                 {c.tag}
@@ -425,8 +425,8 @@ function UseCases() {
               <h3 className="font-display text-2xl md:text-[28px] font-semibold mt-3 leading-tight tracking-tightest">
                 {c.title}
               </h3>
-              <p className="mt-3 text-[15px] text-ink-2 leading-snug">{c.body}</p>
-              <ul className="mt-5 space-y-1.5 text-[14px] text-graphite font-mono">
+              <p className="mt-3 text-[15px] text-sodium/70 leading-snug">{c.body}</p>
+              <ul className="mt-5 space-y-1.5 text-[14px] text-sodium font-mono">
                 {c.bullets.map((b) => (
                   <li key={b} className="flex gap-2">
                     <span aria-hidden className="text-ember">▮</span>
@@ -450,7 +450,7 @@ function Manifest() {
   return (
     <section
       id="manifest"
-      className="py-20 md:py-28 bg-graphite text-sodium border-b border-graphite/40 relative overflow-hidden"
+      className="py-20 md:py-28 bg-slag text-sodium border-b border-sodium/15 relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-foundry-dark pointer-events-none" aria-hidden></div>
       <div className="container max-w-prose relative">
@@ -473,7 +473,7 @@ function Manifest() {
         <div className="grid md:grid-cols-12 gap-8">
           {/* Manifest sample */}
           <pre
-            className="md:col-span-7 font-mono text-[12.5px] leading-[1.6] text-sodium border border-sodium/15 bg-slag p-6 overflow-x-auto"
+            className="md:col-span-7 font-mono text-[12.5px] leading-[1.6] text-sodium border border-sodium/15 bg-billet p-6 overflow-x-auto"
             aria-label="Reproducibility manifest example"
           >
 {`# manifest.toml — signed by foundry/7
@@ -575,7 +575,7 @@ function ApiQuickstart() {
   return (
     <section
       id="api"
-      className="py-20 md:py-28 border-b border-graphite/12"
+      className="py-20 md:py-28 border-b border-sodium/10"
     >
       <div className="container max-w-prose">
         <header className="grid md:grid-cols-12 gap-6 items-end mb-12">
@@ -585,7 +585,7 @@ function ApiQuickstart() {
               POST a schema. GET a dataset.
             </h2>
           </div>
-          <p className="md:col-span-5 text-ink-2 text-[15.5px] leading-snug">
+          <p className="md:col-span-5 text-sodium/70 text-[15.5px] leading-snug">
             REST API + Python and Node clients. Idempotent runs, streaming progress,
             signed download URLs that expire. Sandbox key ships free with every account.
           </p>
@@ -721,7 +721,7 @@ function RunPhases() {
     }
   ];
   return (
-    <section className="py-20 md:py-28 border-b border-graphite/12 bg-sodium-2">
+    <section className="py-20 md:py-28 border-b border-sodium/10 bg-slag">
       <div className="container max-w-prose">
         <header className="mb-10">
           <span className="eyebrow">06 · Inside a run</span>
@@ -729,14 +729,14 @@ function RunPhases() {
             From schema to signed dataset in four phases.
           </h2>
         </header>
-        <ol className="grid md:grid-cols-4 gap-0 border border-graphite/20 bg-sodium">
+        <ol className="grid md:grid-cols-4 gap-0 border border-sodium/15 bg-billet">
           {phases.map((p, i) => (
             <li
               key={p.tag}
               className={
                 "p-6 flex flex-col" +
-                (i < phases.length - 1 ? " md:border-r border-graphite/15" : "") +
-                (i > 0 ? " border-t md:border-t-0 border-graphite/15" : "")
+                (i < phases.length - 1 ? " md:border-r border-sodium/12" : "") +
+                (i > 0 ? " border-t md:border-t-0 border-sodium/12" : "")
               }
             >
               <span className="font-mono text-[11px] tracking-stencil uppercase text-ember">
@@ -745,7 +745,7 @@ function RunPhases() {
               <h3 className="font-display text-xl font-semibold mt-2 leading-tight tracking-tightest">
                 {p.title}
               </h3>
-              <p className="mt-2 text-[14.5px] text-ink-2 leading-snug">{p.body}</p>
+              <p className="mt-2 text-[14.5px] text-sodium/70 leading-snug">{p.body}</p>
             </li>
           ))}
         </ol>
@@ -760,14 +760,14 @@ function RunPhases() {
 
 function Provenance() {
   return (
-    <section className="py-20 md:py-28 border-b border-graphite/12">
+    <section className="py-20 md:py-28 border-b border-sodium/10">
       <div className="container max-w-prose grid md:grid-cols-12 gap-10 items-start">
         <div className="md:col-span-5">
           <span className="eyebrow">08 · Provenance ledger</span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold mt-3 leading-tight tracking-tightest">
             Every row, every reason.
           </h2>
-          <p className="mt-5 text-[16px] text-ink-2 leading-snug">
+          <p className="mt-5 text-[16px] text-sodium/70 leading-snug">
             Mintset keeps a per-row Merkle proof linking each record to its seed,
             schema version, and adjudication. When a customer or regulator says
             &quot;why was this record in your training data?&quot; you have an answer
@@ -775,8 +775,8 @@ function Provenance() {
           </p>
         </div>
         <div className="md:col-span-7">
-          <div className="border border-graphite/20 overflow-hidden">
-            <div className="grid grid-cols-12 px-4 py-2.5 text-[11px] font-mono tracking-stencil uppercase text-ash bg-sodium-2 border-b border-graphite/15">
+          <div className="border border-sodium/15 overflow-hidden">
+            <div className="grid grid-cols-12 px-4 py-2.5 text-[11px] font-mono tracking-stencil uppercase text-ash bg-slag border-b border-sodium/12">
               <span className="col-span-2">ROW</span>
               <span className="col-span-3">RUN</span>
               <span className="col-span-3">CHAIN ROOT</span>
@@ -793,11 +793,11 @@ function Provenance() {
             ].map((row, i) => (
               <div
                 key={i}
-                className="grid grid-cols-12 items-center px-4 py-2.5 text-[13.5px] font-mono border-b border-graphite/10 last:border-b-0 hover:bg-sodium-2/50"
+                className="grid grid-cols-12 items-center px-4 py-2.5 text-[13.5px] font-mono border-b border-sodium/10 last:border-b-0 hover:bg-billet/50"
               >
-                <span className="col-span-2 tabular text-graphite">{row[0]}</span>
-                <span className="col-span-3 text-ink-2">{row[1]}</span>
-                <span className="col-span-3 text-ink-2">{row[2]}</span>
+                <span className="col-span-2 tabular text-sodium">{row[0]}</span>
+                <span className="col-span-3 text-sodium/70">{row[1]}</span>
+                <span className="col-span-3 text-sodium/70">{row[2]}</span>
                 <span
                   className={
                     "col-span-3 " +
@@ -871,7 +871,7 @@ function Faq() {
     }
   ];
   return (
-    <section id="faq" className="py-20 md:py-28 border-b border-graphite/12 bg-sodium-2">
+    <section id="faq" className="py-20 md:py-28 border-b border-sodium/10 bg-slag">
       <div className="container max-w-prose">
         <header className="mb-10">
           <span className="eyebrow">09 · Frequently asked</span>
@@ -879,12 +879,12 @@ function Faq() {
             Honest answers, no hand-waving.
           </h2>
         </header>
-        <div className="border border-graphite/20 bg-sodium">
+        <div className="border border-sodium/15 bg-billet">
           {items.map((it, i) => (
             <details
               key={it.q}
               className={
-                "group px-6 py-5 border-graphite/12" +
+                "group px-6 py-5 border-sodium/10" +
                 (i < items.length - 1 ? " border-b" : "")
               }
             >
@@ -899,7 +899,7 @@ function Faq() {
                   +
                 </span>
               </summary>
-              <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2 max-w-[68ch]">
+              <p className="mt-3 text-[15.5px] leading-relaxed text-sodium/70 max-w-[68ch]">
                 {it.a}
               </p>
             </details>
@@ -916,7 +916,7 @@ function Faq() {
 
 function Footer() {
   return (
-    <footer className="bg-graphite text-sodium pt-16 pb-10">
+    <footer className="bg-slag text-sodium pt-16 pb-10 border-t border-sodium/10">
       <div className="container max-w-prose grid md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">

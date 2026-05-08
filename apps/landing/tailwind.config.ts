@@ -81,8 +81,9 @@ const config: Config = {
         flow: "flow 1.8s linear infinite"
       },
       backgroundImage: {
+        // [MINTSET_DARK_PIVOT 2026-05-08] Stripe with sodium so the tape reads on graphite canvas.
         "tape-orange":
-          "repeating-linear-gradient(135deg, #E25822 0 12px, #0E1013 12px 24px)"
+          "repeating-linear-gradient(135deg, #E25822 0 12px, #FAFAF8 12px 24px)"
       }
     }
   },

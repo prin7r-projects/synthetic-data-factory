@@ -128,8 +128,8 @@ export function PricingCta() {
             key={plan.id}
             className={
               plan.emphasis
-                ? "border-2 border-ember bg-sodium p-7 flex flex-col"
-                : "border border-graphite/20 bg-sodium p-7 flex flex-col"
+                ? "border-2 border-ember bg-slag p-7 flex flex-col"
+                : "border border-sodium/15 bg-slag p-7 flex flex-col"
             }
           >
             <div className="flex items-center justify-between">
@@ -141,7 +141,7 @@ export function PricingCta() {
               ) : null}
             </div>
             <h3 className="font-display text-3xl font-semibold mt-3">{plan.name}</h3>
-            <p className="text-ink-2 text-[15px] mt-2 leading-snug">{plan.blurb}</p>
+            <p className="text-sodium/70 text-[15px] mt-2 leading-snug">{plan.blurb}</p>
 
             <div className="mt-6 flex items-baseline gap-2">
               <span className="font-display text-5xl font-semibold tabular">
@@ -152,7 +152,7 @@ export function PricingCta() {
               </span>
             </div>
 
-            <ul className="mt-6 space-y-2 text-[14.5px] text-ink-2 flex-1">
+            <ul className="mt-6 space-y-2 text-[14.5px] text-sodium/70 flex-1">
               {plan.bullets.map((b) => (
                 <li key={b} className="flex gap-2">
                   <span aria-hidden className="text-ember mt-[2px]">/</span>

@@ -34,20 +34,26 @@ red-team researchers who want adversarial corpora at zero spend.
 
 ## 2. Visual positioning
 
-Mintset is a *precision foundry*. Not "AI-data purple" — graphite, sodium,
-ember. Not "abstract neuron mesh" — schemas you can read. Not "cloud-data
-gradient" — hairlines, hazard tape, stamped seals.
+Mintset is a *precision foundry on graphite*. Operator-grade dark canvas with
+amber-ember accents. The reference is Hyperstudio's monochrome terminal: stark
+graphite #0E1013 page, Polar-equivalent sodium #FAFAF8 ink, ember-orange
+exclusively for primary action and heat indicators. Not "AI-data purple" —
+graphite, sodium, ember. Not "abstract neuron mesh" — schemas you can read.
+Not "cloud-data gradient" — hairlines, hazard tape, stamped seals.
 
-The brand reference frame is industrial: sodium-vapor warehouse light,
-graphite forging blocks, signal-yellow safety tape, ember-orange glow off a
-crucible. The interface is auditable: every claim sits next to a number, a
-hash, a pass/fail.
+The brand reference frame is industrial *night-shift*: a graphite forging floor
+under sodium-vapor lamps, ember-orange glow off a crucible, signal-yellow
+safety tape on the chip rails. The interface is auditable: every claim sits
+next to a number, a hash, a pass/fail.
 
 The schema is the hero. Every page treats schema/code as a first-class brand
-element: monospace plates, hairline borders, no decorative wrappers.
+element: monospace plates on slag/billet surfaces, hairline borders in
+`sodium @ low alpha`, no decorative wrappers.
 
 Forbidden directions: gradients, glassmorphism, neon, neuron art, blockchain
-chrome, abstract "data points floating in space" hero compositions.
+chrome, abstract "data points floating in space" hero compositions, paper /
+parchment / cream canvases (we are NOT a research-journal; we're an operator
+terminal).
 
 ## 3. ShadCN baseline and local component policy
 
@@ -72,23 +78,26 @@ Source of truth: `apps/landing/tailwind.config.ts` and
 `apps/landing/app/globals.css` (CSS custom properties). DO NOT hand-edit hex
 values outside these two files.
 
-### Surfaces
+### Surfaces (dark canvas — pivot 2026-05-08)
 
-| Token       | Hex       | Role                                |
-|-------------|-----------|-------------------------------------|
-| `graphite`  | `#0E1013` | Dark surface (footer, plates, manifest section) |
-| `slag`      | `#1A1D22` | Slightly lifted dark surface       |
-| `billet`    | `#22262C` | Card-on-dark hover                 |
-| `sodium`    | `#FAFAF8` | Page background (sodium-vapor white) |
-| `sodium-2`  | `#F0EFEC` | Alt section background             |
+| Token       | Hex       | Role                                                       |
+|-------------|-----------|------------------------------------------------------------|
+| `graphite`  | `#0E1013` | **Page canvas** (body bg) — primary forging-floor surface  |
+| `slag`      | `#1A1D22` | Lifted card surface (use cases, pricing, FAQ, footer, marquee) |
+| `billet`    | `#22262C` | Highest-elevation surface (manifest pre, RunPhases ol, FAQ inner) |
+| `sodium`    | `#FAFAF8` | Sodium-vapor ink — primary text on dark                    |
+| `sodium-2`  | `#F0EFEC` | Reserved (legacy alt; rarely used post-pivot)              |
 
 ### Inks
 
-| Token       | Hex       | Role                                |
-|-------------|-----------|-------------------------------------|
-| `ink`       | `#0E1013` | Primary text on light              |
-| `ink-2`     | `#3A3F47` | Body text on light                 |
-| `ash`       | `#7E8A95` | Eyebrow / metadata text            |
+| Token       | Hex       | Role                                                            |
+|-------------|-----------|-----------------------------------------------------------------|
+| `ink`       | `#0E1013` | Reserved for ink-on-light (e.g. hover state of ghost button)    |
+| `ink-2`     | `#3A3F47` | Reserved (legacy)                                               |
+| `ash`       | `#7E8A95` | Eyebrow / metadata text — reads on graphite at 4.5:1            |
+| `text-sodium`         | `#FAFAF8` (alpha 1.0) | Primary text on dark canvas |
+| `text-sodium/70`      | `#FAFAF8` α0.70       | Body / secondary text       |
+| `text-sodium/45–55`   | `#FAFAF8` α0.45–0.55  | Tertiary / metadata         |
 
 ### Signals
 
@@ -100,9 +109,10 @@ values outside these two files.
 | `weld`      | `#3FA48A` | Verified / pass                    |
 | `scarlet`   | `#C03A3A` | Error / fail                       |
 
-**Contrast.** All ink-on-sodium and sodium-on-graphite combinations clear
-WCAG 2.1 AA at body sizes. Ember on sodium clears 3:1 for large text and
-non-text UI components; never used for body copy.
+**Contrast.** sodium-on-graphite (≈19:1), sodium/70-on-graphite (≈12:1),
+sodium/45-on-graphite (≈7:1) all clear WCAG 2.1 AA at body sizes. Ember on
+graphite clears 4.6:1 — usable for non-body accents and 18px+ headings; never
+used for body copy. Ash (#7E8A95) on graphite is 4.7:1 — passes AA for body.
 
 ## 5. Typography
 
@@ -137,9 +147,10 @@ and pricing align cleanly.
   for status dots and chips only.
 - **Shadows.** No shadows except `shadow-masthead` (1px hairline under the sticky
   nav) and `shadow-emberglow` (focused/active CTA glow — used sparingly).
-- **Borders.** Hairlines only: `border-graphite/15` (light surfaces),
-  `border-sodium/15` (dark surfaces). 1.5–2px borders reserved for the emphasized
-  pricing card and the stamped seal.
+- **Borders.** Hairlines only: `border-sodium/10–25` on the dark canvas.
+  1.5–2px borders reserved for the emphasized pricing card and the stamped seal.
+  (`border-graphite/*` retained in legacy notes; the post-pivot codebase uses
+  `border-sodium/*` because the canvas is graphite.)
 
 ## 7. Layout system and responsive rules
 
@@ -150,7 +161,7 @@ and pricing align cleanly.
 - **Hero rule:** On `<md`, the schema-as-art block stacks below the hero copy
   and respects `overflow-x-auto` so the YAML and JSON examples never spill the
   viewport.
-- **Sticky nav:** masthead at `top-0`, `bg-sodium/95 backdrop-blur`, hairline border below.
+- **Sticky nav:** masthead at `top-0`, `bg-graphite/85 backdrop-blur`, hairline `border-sodium/10` below.
 
 ## 8. Component catalog
 
@@ -264,5 +275,15 @@ brand patterns, abstract "neural net" hero compositions.
 
 ## 15. Changelog
 
+- **2026-05-08 design refresh — hyperstudio dark canvas pivot** — Wave 2 design
+  refresh. Body canvas flipped from sodium #FAFAF8 (cream) to graphite #0E1013
+  (dark forge floor). Cards lifted to slag #1A1D22; emphasized cards / RunPhases
+  / Manifest pre to billet #22262C. Default Button variant flipped to light-on-
+  dark (sodium fill, graphite text, ember on hover). Borders flipped to
+  `border-sodium/10–25`. Hairline helpers in `globals.css` rewritten for dark
+  canvas. `.plate` and `.grid-foundry` rewritten for dark. Ember accent retained
+  exclusively for primary action and highlight; ash + sodium/70 carry secondary
+  text. Visual positioning §2 rewritten as monochrome terminal + ember accents.
+  Reference: `/Users/keer/projects/prin7r/design-references/hyperstudio.md`.
 - **2026-05-08 v1.0** — initial DESIGN.md. Tokens, type, layout, components,
   and landing structure all locked. Quality gates met for the Wave 2 launch.
