@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://synthetic-data-factory.prin7r.com/sitemap.xml
