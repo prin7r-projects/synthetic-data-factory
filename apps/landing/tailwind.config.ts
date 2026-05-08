@@ -81,9 +81,11 @@ const config: Config = {
         flow: "flow 1.8s linear infinite"
       },
       backgroundImage: {
-        // [MINTSET_DARK_PIVOT 2026-05-08] Stripe with sodium so the tape reads on graphite canvas.
+        // [MINTSET_DARK_PIVOT 2026-05-08] Stripe with slag (#1A1D22) instead of sodium —
+        // softer second stop that still reads against the graphite page but doesn't
+        // glare on the dark canvas. Was ember+sodium; now ember+slag.
         "tape-orange":
-          "repeating-linear-gradient(135deg, #E25822 0 12px, #FAFAF8 12px 24px)"
+          "repeating-linear-gradient(135deg, #E25822 0 12px, #1A1D22 12px 24px)"
       }
     }
   },
