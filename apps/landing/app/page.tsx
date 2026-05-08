@@ -76,7 +76,7 @@ function Masthead() {
       <div className="container max-w-prose flex items-center justify-between h-14">
         <a href="#hero" className="flex items-center gap-2.5 group">
           <span aria-hidden className="font-mono text-[12px] tracking-stencil uppercase text-ash">
-            F/7
+            Ms
           </span>
           <span className="font-display text-[19px] font-semibold tracking-tightest">
             Mintset
@@ -925,7 +925,7 @@ function Footer() {
             </span>
             <span className="chip border-sodium/20 text-sodium/70">
               <span className="dot-live" aria-hidden></span>
-              FOUNDRY ONLINE
+              MINTSET ONLINE
             </span>
           </div>
           <p className="mt-5 text-[15px] leading-snug text-sodium/70 max-w-[40ch]">
