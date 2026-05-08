@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Foundry/7 — Pitch Deck</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  :root {
+    --graphite:#0E1013;
+    --slag:#1A1D22;
+    --sodium:#F5F2EA;
+    --sodium-2:#EDE8DB;
+    --ink-2:#3A3F47;
+    --ash:#7E8A95;
+    --ember:#E25822;
+    --flux:#F2C94C;
+    --weld:#3FA48A;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--sodium);color:var(--graphite);
+    font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.45;}
+  .deck{display:flex;flex-direction:column;gap:0;}
+  .slide{
+    min-height:100vh;
+    padding:48px clamp(24px,4vw,80px);
+    border-bottom:1px solid rgba(14,16,19,.12);
+    display:flex;flex-direction:column;justify-content:center;
+    background:var(--sodium);
+    page-break-after:always;
+    background-image:linear-gradient(to right,rgba(14,16,19,.04) 1px,transparent 1px),
+                     linear-gradient(to bottom,rgba(14,16,19,.04) 1px,transparent 1px);
+    background-size:32px 32px;
+  }
+  .slide.dark{background:var(--graphite);color:var(--sodium);
+    background-image:linear-gradient(to right,rgba(245,242,234,.05) 1px,transparent 1px),
+                     linear-gradient(to bottom,rgba(245,242,234,.05) 1px,transparent 1px);
+  }
+  .container{max-width:1100px;margin:0 auto;width:100%;}
+  .eyebrow{
+    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash);
+    display:inline-flex;align-items:center;gap:.6em;margin-bottom:18px;
+  }
+  .slide.dark .eyebrow{color:var(--flux);}
+  h1.title{
+    font-family:'Inter Display',Inter,sans-serif;
+    font-weight:700;font-size:clamp(56px,9vw,128px);line-height:.94;letter-spacing:-.024em;
+    margin:0 0 24px;
+  }
+  h2{
+    font-family:'Inter Display',Inter,sans-serif;
+    font-weight:700;font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.018em;
+    margin:0 0 22px;
+  }
+  h3{
+    font-family:'Inter Display',Inter,sans-serif;
+    font-weight:700;font-size:clamp(22px,3vw,32px);line-height:1.1;letter-spacing:-.014em;
+    margin:0 0 12px;
+  }
+  p,li{font-size:clamp(17px,1.6vw,22px);max-width:48em;}
+  ul{padding-left:1.4em;}
+  li{margin-bottom:.5em;}
+  .ember{color:var(--ember);}
+  .flux{color:var(--flux);}
+  .slash{color:var(--ember);}
+  .stamp{
+    border:1.5px solid var(--ember);color:var(--ember);
+    padding:8px 14px;display:inline-block;font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    transform:rotate(-3deg);margin-bottom:24px;
+  }
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:16px;}
+  th,td{padding:10px 14px;border-bottom:1px solid rgba(14,16,19,.15);text-align:left;}
+  .slide.dark th,.slide.dark td{border-color:rgba(245,242,234,.15);}
+  pre,code{
+    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    background:var(--graphite);color:var(--sodium);
+    padding:18px;display:block;overflow-x:auto;font-size:14px;line-height:1.55;
+    border-left:3px solid var(--ember);
+  }
+  .slide.dark pre,.slide.dark code{background:var(--slag);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr;}}
+  .pillrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 24px;}
+  .pill{
+    border:1px solid rgba(14,16,19,.4);padding:6px 12px;font-size:14px;
+    font-family:'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .slide.dark .pill{border-color:rgba(245,242,234,.4);}
+  .footer{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash);
+    margin-top:auto;padding-top:30px;
+  }
+  .num{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;
+    color:var(--ash);text-transform:uppercase;
+  }
+  .heat{
+    height:8px;
+    background-image:repeating-linear-gradient(135deg,var(--ember) 0 12px,var(--graphite) 12px 24px);
+    margin:24px 0;
+  }
+  @media print {
+    .slide{min-height:100vh;page-break-after:always;border:none;}
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 01 -->
+  <section class="slide dark">
+    <div class="container">
+      <span class="eyebrow"><span class="flux">●</span> 01 / 10 · TITLE</span>
+      <span class="stamp">VERIFIED · MANIFEST 0x8c4f</span>
+      <h1 class="title">Foundry<span class="slash">/</span>7</h1>
+      <p style="font-size:24px;color:var(--sodium);max-width:30ch;">Synthetic data, declared. A precision foundry for ML and AI teams.</p>
+      <div class="heat" aria-hidden="true"></div>
+      <div class="footer">SYNTHETIC-DATA-FACTORY.PRIN7R.COM · 2026·05·08 · v1.0</div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="slide">
+    <div class="container">
+      <span class="eyebrow">02 / 10 · THE PROBLEM</span>
+      <h2>ML teams need labeled data. Three things go wrong.</h2>
+      <ul>
+        <li><strong>Cold-start.</strong> No real data yet.</li>
+        <li><strong>Long-tail.</strong> Real data is too smooth; edge cases hit production first.</li>
+        <li><strong>Privacy.</strong> Legal won't let real data leave the building.</li>
+      </ul>
+      <p>Today's synthetic-data tools generate the data — but ship the manifest as an afterthought. <strong class="ember">Without a manifest, the data is gossip.</strong></p>
+      <div class="footer">02 · THE PROBLEM</div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="slide dark">
+    <div class="container">
+      <span class="eyebrow">03 / 10 · OUR WEDGE</span>
+      <h2>The manifest is the product.<br/>The dataset is the byproduct.</h2>
+      <ul>
+        <li>Schema, seed, model versions, constraint pass/fail, bias drift in σ.</li>
+        <li>Row-level Merkle proofs — drop one row without re-running the dataset.</li>
+        <li>ed25519 signatures, verifiable offline.</li>
+        <li>Vertical specialists for medical, legal, fintech, robotics.</li>
+      </ul>
+      <p>Your auditor accepts it. Your CEO defends it. Your CI re-runs it.</p>
+      <div class="footer">03 · WEDGE</div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="slide">
+    <div class="container">
+      <span class="eyebrow">04 / 10 · PRODUCT</span>
+      <h2>POST a schema. GET a dataset.</h2>
+      <pre>declare schema → forge → adjudicate → stamp → ship signed dataset</pre>
+      <table>
+        <thead><tr><th>Phase</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>Compile (lint constraints)</td><td>T+0</td></tr>
+          <tr><td>Forge (generate records)</td><td>T+0 → T+34m</td></tr>
+          <tr><td>Adjudicate (LLM-of-judgement + optional human panel)</td><td>T+34m → T+38m</td></tr>
+          <tr><td>Stamp (manifest + Merkle root + signed URL)</td><td>T+38m</td></tr>
+        </tbody>
+      </table>
+      <p>REST API + Python SDK + Node SDK. Webhooks signed with HMAC.</p>
+      <div class="footer">04 · PRODUCT</div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="slide">
+    <div class="container">
+      <span class="eyebrow">05 / 10 · MARKET</span>
+      <h2>AI-mature product cos · AI labs · regulated verticals.</h2>
+      <ul>
+        <li><strong>TAM</strong> (synthetic-data market): $2.5B in 2025; ~35% CAGR → $11B by 2030.</li>
+        <li><strong>SAM</strong> (our segments): ~$700M.</li>
+        <li><strong>Initial wedge</strong>: eval and benchmark datasets. Reproducibility is the moat.</li>
+      </ul>
+      <div class="pillrow">
+        <span class="pill">EVAL LEAD</span>
+        <span class="pill">ML ENGINEER</span>
+        <span class="pill">APPLIED SCIENTIST</span>
+      </div>
+      <div class="footer">05 · MARKET</div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="slide dark">
+    <div class="container">
+      <span class="eyebrow">06 / 10 · WHY NOW</span>
+      <h2>Three forces, one moment.</h2>
+      <ul>
+        <li>Regulator pressure on AI training-data provenance — EU AI Act, US executive orders, healthcare/financial regulators.</li>
+        <li>Eval is now a board concern. Public benchmarks are saturated.</li>
+        <li>Crypto rails (NOWPayments, Plisio) make global B2B billing possible without a 6-month KYC cycle.</li>
+      </ul>
+      <div class="footer">06 · WHY NOW</div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="slide">
+    <div class="container">
+      <span class="eyebrow">07 / 10 · BUSINESS MODEL</span>
+      <h2>Three credit shapes. One foundry.</h2>
+      <table>
+        <thead><tr><th>Tier</th><th>Price</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bench</strong></td><td>$480</td><td>Single run</td></tr>
+          <tr><td><strong>Production</strong></td><td>$2,400 setup + $1,900/mo</td><td>Monthly credit</td></tr>
+          <tr><td><strong>Enterprise</strong></td><td>$12,000+</td><td>Quarterly</td></tr>
+        </tbody>
+      </table>
+      <p>USDT/USDC default. Card on-ramp via NOWPayments. EUR/USD wire on request.</p>
+      <p><strong>Target: $250k ARR by month-12.</strong></p>
+      <div class="footer">07 · MODEL</div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="slide">
+    <div class="container">
+      <span class="eyebrow">08 / 10 · MOATS</span>
+      <h2>Why Foundry/7 stays Foundry/7.</h2>
+      <div class="grid2">
+        <div>
+          <h3>1 · Manifest format</h3>
+          <p>We define the spec, ship the verifier, release the SDK MIT-licensed. Auditors start asking other vendors for the same artifact.</p>
+        </div>
+        <div>
+          <h3>2 · Vertical packs</h3>
+          <p>Specialists for medical, legal, fintech, robotics. 6+ month moat per vertical.</p>
+        </div>
+        <div>
+          <h3>3 · Row-level provenance</h3>
+          <p>Merkle + ed25519 per-row, not per-dataset. Most vendors won't pay the cost.</p>
+        </div>
+        <div>
+          <h3>4 · OSS SDK + closed forge</h3>
+          <p>Community moat without giving away the generation stack.</p>
+        </div>
+      </div>
+      <div class="footer">08 · MOATS</div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="slide dark">
+    <div class="container">
+      <span class="eyebrow">09 / 10 · TRACTION</span>
+      <h2>Wave 2 ships 2026-05-08.</h2>
+      <ul>
+        <li>Landing + NOWPayments invoice live at <code style="background:none;color:var(--flux);padding:0;border:none;display:inline">synthetic-data-factory.prin7r.com</code>.</li>
+        <li>Brand + 10-doc stack published as MIT-licensed source.</li>
+        <li>First paying Bench customer: founder-internal, validating the pipeline end-to-end.</li>
+      </ul>
+      <h3 class="ember">90-day target</h3>
+      <ul>
+        <li>25 paying Bench customers</li>
+        <li>6 paying Production customers</li>
+        <li>1 signed Enterprise quarter</li>
+        <li>$32k+ cumulative revenue</li>
+      </ul>
+      <div class="footer">09 · TRACTION</div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="container">
+      <span class="eyebrow">10 / 10 · THE ASK</span>
+      <h2>$400k seed for Wave 3.</h2>
+      <ul>
+        <li>Dashboard (apps/app/), API service, forge worker pool</li>
+        <li>1 founding ML engineer (verticals lead)</li>
+        <li>1 ops engineer (compute)</li>
+        <li>1 SDR for Enterprise outbound</li>
+        <li>18-month runway to $1M ARR + a Series-A datasheet</li>
+      </ul>
+      <div class="heat" aria-hidden="true"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.04em;">
+        foundry@synthetic-data-factory.prin7r.com<br/>
+        github.com/prin7r-projects/synthetic-data-factory
+      </p>
+      <div class="footer">END · 10 OF 10 · 2026·05·08</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
