@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * [FOUNDRY7_TAILWIND] Locked tokens for the synthetic-data-factory landing.
- * Source of truth for the Foundry/7 palette + type pair. Mirrored in
+ * Source of truth for the Mintset palette + type pair. Mirrored in
  * `app/globals.css` and documented in /DESIGN.md sections 4-6.
  *
  * Brand: precision foundry / steel mill / laboratory
@@ -24,8 +24,8 @@ const config: Config = {
         slag: "#1A1D22",
         billet: "#22262C",
         // Sodium-white paper
-        sodium: "#F5F2EA",
-        "sodium-2": "#EDE8DB",
+        sodium: "#FAFAF8",
+        "sodium-2": "#F0EFEC",
         // Inks
         ink: "#0E1013",
         "ink-2": "#3A3F47",

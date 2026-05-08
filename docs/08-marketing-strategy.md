@@ -2,7 +2,7 @@
 
 ## Positioning (one-line)
 
-**Foundry/7 is the synthetic-data factory that ships the manifest *as the
+**Mintset is the synthetic-data factory that ships the manifest *as the
 product*** — schema in, dataset out, with row-level provenance an auditor
 will accept.
 
@@ -57,7 +57,7 @@ will accept.
 | 0–2  | Wave 2 ship: landing live, NOWPayments invoice live, brand identity locked, DESIGN.md published, 10 docs published. **Done by 2026-05-08.** |
 | 2–4  | First-50 outbound: hand-emailed introductions to named eval leads at 30 AI labs. Free Bench credit code (`PRIN7R-FOUNDRY-50`). |
 | 4–6  | First long-form post: "Manifests as the product". Crosspost LinkedIn + HN. |
-| 6–8  | "Show HN: Foundry/7" launch (only after at least 5 paying Bench customers + 1 Production customer). |
+| 6–8  | "Show HN: Mintset" launch (only after at least 5 paying Bench customers + 1 Production customer). |
 | 8–10 | First case study (with explicit logo permission). Recorded teardown of a synthetic medical-coding benchmark. |
 | 10–12 | Eval-framework partnership (Promptfoo or Inspect) — co-author the eval-template repo. |
 | 12+  | Apply to NeurIPS Reproducibility Workshop with co-author. |

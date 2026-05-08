@@ -2,7 +2,7 @@
 
 /**
  * [FOUNDRY7_BUTTON] Vendored from shadcn/ui (Button) and re-themed against
- * the Foundry/7 tokens. Square edges, ink fill, ember on hover. The source
+ * the Mintset tokens. Square edges, ink fill, ember on hover. The source
  * is owned by this repo per the Prin7r ShadCN-first baseline (DESIGN.md §3).
  */
 

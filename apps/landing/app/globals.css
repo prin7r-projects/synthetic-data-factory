@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* [FOUNDRY7_GLOBALS]
+/* [MINTSET_GLOBALS]
  * Steel-mill / precision-foundry palette and type system, locked.
  * Mirrors tailwind.config.ts and DESIGN.md sections 4-6.
  */
@@ -12,8 +12,8 @@
     --color-graphite: #0e1013;
     --color-slag: #1a1d22;
     --color-billet: #22262c;
-    --color-sodium: #f5f2ea;
-    --color-sodium-2: #ede8db;
+    --color-sodium: #FAFAF8;
+    --color-sodium-2: #F0EFEC;
     --color-ink: #0e1013;
     --color-ink-2: #3a3f47;
     --color-ash: #7e8a95;

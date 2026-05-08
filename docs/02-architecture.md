@@ -10,9 +10,9 @@ flowchart LR
     Web[Web dashboard]
   end
 
-  Customer -->|HTTPS + Bearer| API[(Foundry/7 API\napi.synthetic-data-factory.prin7r.com)]
+  Customer -->|HTTPS + Bearer| API[(Mintset API\napi.synthetic-data-factory.prin7r.com)]
 
-  subgraph Foundry
+  subgraph Mintset
     API --> COMPILE[Compiler\nschema → IR]
     COMPILE --> QUEUE{{Run queue\nNATS JetStream}}
     QUEUE --> FORGE[Forge workers\ntext + tabular generators]

@@ -1,4 +1,4 @@
-# Foundry/7 — DESIGN.md
+# Mintset — DESIGN.md
 
 > Canonical design + style guide for `synthetic-data-factory`.
 > Owned by Chief of Design. Synced with `apps/landing/tailwind.config.ts`,
@@ -9,9 +9,9 @@
 
 ## 1. Product and audience
 
-**Product.** Foundry/7 generates labeled synthetic datasets for ML and AI teams.
+**Product.** Mintset generates labeled synthetic datasets for ML and AI teams.
 The customer declares a schema (records, types, constraints), a bias profile
-(distributions, edge-case densities), and a volume — Foundry/7 returns a
+(distributions, edge-case densities), and a volume — Mintset returns a
 labeled dataset alongside a signed reproducibility manifest (seed, model
 versions, lineage hash, constraint pass/fail, bias drift in σ).
 
@@ -34,7 +34,7 @@ red-team researchers who want adversarial corpora at zero spend.
 
 ## 2. Visual positioning
 
-Foundry/7 is a *precision foundry*. Not "AI-data purple" — graphite, sodium,
+Mintset is a *precision foundry*. Not "AI-data purple" — graphite, sodium,
 ember. Not "abstract neuron mesh" — schemas you can read. Not "cloud-data
 gradient" — hairlines, hazard tape, stamped seals.
 
@@ -79,8 +79,8 @@ values outside these two files.
 | `graphite`  | `#0E1013` | Dark surface (footer, plates, manifest section) |
 | `slag`      | `#1A1D22` | Slightly lifted dark surface       |
 | `billet`    | `#22262C` | Card-on-dark hover                 |
-| `sodium`    | `#F5F2EA` | Page background (sodium-vapor white) |
-| `sodium-2`  | `#EDE8DB` | Alt section background             |
+| `sodium`    | `#FAFAF8` | Page background (sodium-vapor white) |
+| `sodium-2`  | `#F0EFEC` | Alt section background             |
 
 ### Inks
 

@@ -1,6 +1,6 @@
 # 01 — Brand identity
 
-> Foundry/7 — synthetic data, declared.
+> Mintset — synthetic data, declared.
 
 ## Brand pyramid
 
@@ -12,7 +12,7 @@
 ## Positioning statement
 
 For **ML engineers, eval leads, and applied scientists** who **need labeled
-data with a defensible audit trail**, **Foundry/7** is a **synthetic data
+data with a defensible audit trail**, **Mintset** is a **synthetic data
 factory** that **delivers schema-driven datasets with row-level provenance
 and a signed reproducibility manifest** — unlike **generic synthetic-data
 platforms** because **we treat the manifest as the product, not the
@@ -92,7 +92,7 @@ artifact of the factory, so they live in monospace plates everywhere.
 
 ### Logo concept
 
-A wordmark `Foundry/7` where the `/` is rendered in `ember`. The "7" is a
+A wordmark `Mintset` where the `/` is rendered in `ember`. The "7" is a
 nod to the `prin7r` parent brand. No standalone monogram — the wordmark
 *is* the mark. Inline SVG mark used for favicon: a stack of three plates
 (records) with one plate ember-tinted (the row being forged).

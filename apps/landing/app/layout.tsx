@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Foundry/7 — synthetic dataset factory · schema in, dataset out",
+  title: "Mintset — synthetic dataset factory · schema in, dataset out",
   description:
     "Declare your schema, constraints, and bias profile. Receive a labeled synthetic dataset with provenance, audit log, and reproducibility manifest. Built for ML engineers, eval leads, applied scientists.",
   metadataBase: new URL("https://synthetic-data-factory.prin7r.com"),
   openGraph: {
-    title: "Foundry/7 — synthetic dataset factory",
+    title: "Mintset — synthetic dataset factory",
     description:
       "Schema in, labeled dataset out. Auditable, reproducible synthetic data for training and evaluation.",
     url: "https://synthetic-data-factory.prin7r.com",
-    siteName: "Foundry/7",
+    siteName: "Mintset",
     type: "website"
   },
   icons: {

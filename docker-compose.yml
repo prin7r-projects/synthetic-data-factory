@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.landing
-    image: foundry7-landing:latest
-    container_name: foundry7-landing
+    image: mintset-landing:latest
+    container_name: mintset-landing
     restart: unless-stopped
     expose:
       - "3000"

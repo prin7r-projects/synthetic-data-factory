@@ -8,7 +8,7 @@ browser without a build step.
 
 ## Slide 01 — Title
 
-**Foundry/7**
+**Mintset**
 
 Synthetic data, declared.
 
@@ -35,7 +35,7 @@ an afterthought. **Without a manifest, the data is gossip.**
 
 **The manifest is the product. The dataset is the byproduct.**
 
-Every Foundry/7 run delivers:
+Every Mintset run delivers:
 
 - Schema, seed, model versions, constraint pass/fail, bias drift in σ
 - Row-level Merkle proofs (drop one row without re-running the dataset)

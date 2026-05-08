@@ -1,4 +1,4 @@
-# Foundry/7 — Synthetic Data Factory
+# Mintset — Synthetic Data Factory
 
 > Schema in. Dataset out. On-demand synthetic data for ML teams,
 > with provenance, audit log, and a reproducibility manifest you can
@@ -49,8 +49,8 @@
 
 ## Screenshots
 
-![Foundry/7 landing — desktop](docs/screenshots/landing-desktop.png)
-![Foundry/7 landing — mobile](docs/screenshots/landing-mobile.png)
+![Mintset landing — desktop](docs/screenshots/landing-desktop.png)
+![Mintset landing — mobile](docs/screenshots/landing-mobile.png)
 
 ## Development
 
@@ -79,7 +79,7 @@ compose file pulls those via `env_file: .env`.
 
 ## Brand identity (one-line)
 
-**Foundry/7** is a *precision foundry* aesthetic: graphite + sodium-white +
+**Mintset** is a *precision foundry* aesthetic: graphite + sodium-white +
 carbon-orange ember + signal-yellow accents, Inter Display + JetBrains Mono.
 Every page treats a schema declaration like the hero artifact it is.
 

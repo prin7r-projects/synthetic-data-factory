@@ -36,7 +36,7 @@ Switch from hand-built to repeatable.
 | W6 | Second long-form post: "Why your eval set needs a manifest." | Founder |
 | W7 | First refund issued (intentional — proves the policy works). | Founder |
 | W7 | Eval-framework partnership conversation opened (Promptfoo or Inspect). | Founder |
-| W8 | "Show HN: Foundry/7" launch (only if W7 customer count ≥10). | Founder |
+| W8 | "Show HN: Mintset" launch (only if W7 customer count ≥10). | Founder |
 | W8 | First customer testimonial captured (text + permission). | Founder |
 
 **KPI gates W5–8.**

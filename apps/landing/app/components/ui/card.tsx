@@ -1,6 +1,6 @@
 /**
  * [FOUNDRY7_CARD] Vendored from shadcn/ui (Card) and re-themed against the
- * Foundry/7 tokens. Square edges, hairline border, no shadow. The repo owns
+ * Mintset tokens. Square edges, hairline border, no shadow. The repo owns
  * this source per the Prin7r ShadCN-first baseline (DESIGN.md §3).
  */
 

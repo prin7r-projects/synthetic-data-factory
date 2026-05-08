@@ -71,7 +71,7 @@ function Masthead() {
   return (
     <header
       className="sticky top-0 z-30 bg-sodium/95 backdrop-blur border-b border-graphite/12 shadow-masthead"
-      aria-label="Foundry/7 site header"
+      aria-label="Mintset site header"
     >
       <div className="container max-w-prose flex items-center justify-between h-14">
         <a href="#hero" className="flex items-center gap-2.5 group">
@@ -79,7 +79,7 @@ function Masthead() {
             F/7
           </span>
           <span className="font-display text-[19px] font-semibold tracking-tightest">
-            Foundry<span className="text-ember">/</span>7
+            Mintset
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-7 text-[14px]">
@@ -408,7 +408,7 @@ function UseCases() {
             </h2>
           </div>
           <p className="md:col-span-4 text-ink-2 text-[15.5px] leading-snug">
-            Every Foundry/7 run starts as a schema and ends as a signed dataset. The
+            Every Mintset run starts as a schema and ends as a signed dataset. The
             shape changes; the rigor doesn&apos;t.
           </p>
         </header>
@@ -464,7 +464,7 @@ function Manifest() {
             </h2>
           </div>
           <p className="md:col-span-5 text-sodium/75 text-[15.5px] leading-snug">
-            Synthetic data without a manifest is gossip. Foundry/7 ships every run with a
+            Synthetic data without a manifest is gossip. Mintset ships every run with a
             signed reproducibility receipt — schema, seed, model versions, bias profile,
             constraints, and a row-level provenance hash chain.
           </p>
@@ -596,7 +596,7 @@ function ApiQuickstart() {
             label="curl · create a run"
             language="shell"
             code={`curl https://api.synthetic-data-factory.prin7r.com/v1/runs \\
-  -H "Authorization: Bearer $FOUNDRY_API_KEY" \\
+  -H "Authorization: Bearer $MINTSET_API_KEY" \\
   -H "Content-Type: application/yaml" \\
   --data-binary @schema.foundry.yml
 
@@ -611,9 +611,9 @@ function ApiQuickstart() {
           <CodeBlock
             label="python · poll & download"
             language="python"
-            code={`from foundry7 import Foundry
+            code={`from mintset import Mintset
 
-f = Foundry(api_key=os.environ["FOUNDRY_API_KEY"])
+f = Mintset(api_key=os.environ["MINTSET_API_KEY"])
 run = f.runs.create_from_file("schema.foundry.yml")
 
 for event in run.stream():
@@ -626,9 +626,9 @@ print(dataset.manifest.chain_root)`}
           <CodeBlock
             label="node · ergonomic SDK"
             language="ts"
-            code={`import { Foundry } from "@foundry7/sdk";
+            code={`import { Mintset } from "@mintset/sdk";
 
-const f = new Foundry({ apiKey: process.env.FOUNDRY_API_KEY });
+const f = new Mintset({ apiKey: process.env.MINTSET_API_KEY });
 const run = await f.runs.create({ schemaPath: "./schema.foundry.yml" });
 
 for await (const ev of run.stream()) {
@@ -768,7 +768,7 @@ function Provenance() {
             Every row, every reason.
           </h2>
           <p className="mt-5 text-[16px] text-ink-2 leading-snug">
-            Foundry/7 keeps a per-row Merkle proof linking each record to its seed,
+            Mintset keeps a per-row Merkle proof linking each record to its seed,
             schema version, and adjudication. When a customer or regulator says
             &quot;why was this record in your training data?&quot; you have an answer
             with a hash on it.
@@ -827,7 +827,7 @@ function Faq() {
     {
       q: "Are the datasets actually useful for training?",
       a:
-        "Yes — within the bounds you declare. Foundry/7 is best for cold-start, eval, edge-case augmentation, and privacy-safe clones. We are honest about limits: synthetic data is not a substitute for representative real-world data when subtle distribution shifts matter. The manifest tells you exactly where the dataset can be trusted."
+        "Yes — within the bounds you declare. Mintset is best for cold-start, eval, edge-case augmentation, and privacy-safe clones. We are honest about limits: synthetic data is not a substitute for representative real-world data when subtle distribution shifts matter. The manifest tells you exactly where the dataset can be trusted."
     },
     {
       q: "What model do you generate from?",
@@ -867,7 +867,7 @@ function Faq() {
     {
       q: "How is this different from Tonic / Mostly / Gretel / etc.?",
       a:
-        "Foundry/7 is opinionated about three things: (1) reproducibility manifests as a first-class artifact, (2) row-level provenance instead of dataset-level provenance, and (3) vertical specialists rather than one model for everything. We are smaller, narrower, and more auditable. Read /docs/04-pain-points.md for the head-to-head."
+        "Mintset is opinionated about three things: (1) reproducibility manifests as a first-class artifact, (2) row-level provenance instead of dataset-level provenance, and (3) vertical specialists rather than one model for everything. We are smaller, narrower, and more auditable. Read /docs/04-pain-points.md for the head-to-head."
     }
   ];
   return (
@@ -921,7 +921,7 @@ function Footer() {
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             <span className="font-display text-3xl font-semibold tracking-tightest">
-              Foundry<span className="text-ember">/</span>7
+              Mintset
             </span>
             <span className="chip border-sodium/20 text-sodium/70">
               <span className="dot-live" aria-hidden></span>
@@ -980,7 +980,7 @@ function Footer() {
                 href="https://github.com/prin7r-projects/synthetic-data-factory/blob/main/docs/04-pain-points.md"
                 className="hover:text-ember"
               >
-                Why Foundry/7
+                Why Mintset
               </a>
             </li>
             <li>
@@ -1023,7 +1023,7 @@ function Footer() {
       </div>
 
       <div className="container max-w-prose mt-14 pt-6 border-t border-sodium/15 flex flex-wrap items-center justify-between gap-4 text-[12px] font-mono tracking-stencil uppercase text-sodium/55">
-        <span>© 2026 Prin7r — Foundry/7. MIT-licensed source.</span>
+        <span>© 2026 Prin7r — Mintset. MIT-licensed source.</span>
         <span>BUILD · 2026·05·08 · v1.0</span>
       </div>
     </footer>

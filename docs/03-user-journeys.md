@@ -10,13 +10,13 @@ medical-coding benchmark for the board meeting on Friday. It is Tuesday.
 
 | Step | Where | What happens |
 |------|-------|--------------|
-| 1 | Twitter / X | Mei sees a Foundry/7 thread on benchmark reproducibility (a manifest screenshot, not a logo) and clicks through. |
+| 1 | Twitter / X | Mei sees a Mintset thread on benchmark reproducibility (a manifest screenshot, not a logo) and clicks through. |
 | 2 | `synthetic-data-factory.prin7r.com#hero` | Hero shows a real schema → real row. She reads the constraints block ("escalated == true => sentiment < -0.3"). She thinks: "they actually understand this." |
 | 3 | `#manifest` | Sees the signed-manifest sample with `chain_root` and σ-drift. Slack-shares the screenshot. |
 | 4 | `#api` | Reads curl + Python. Decides she can prototype tonight. |
 | 5 | `#pricing` | Picks **Production** ($2,400). Clicks "Take Production →". |
 | 6 | NOWPayments invoice | Pays in USDT (her startup keeps a treasury wallet). Returns to `?status=paid`. |
-| 7 | Email | Foundry-engineer pings her in Slack within 4 hours; they paste a draft schema for medical-coding. |
+| 7 | Email | Mintset-engineer pings her in Slack within 4 hours; they paste a draft schema for medical-coding. |
 | 8 | Wed AM | First 50k-row run lands. Manifest in hand. |
 | 9 | Thursday | Mei iterates schema once (constraints tweaked). Second run lands in 38 min. |
 | 10 | Friday | Board meeting: Mei shows the benchmark *plus* the manifest. CEO approves the eval pipeline as the new internal standard. |
@@ -29,7 +29,7 @@ the product hasn't shipped yet.
 
 | Step | Where | What happens |
 |------|-------|--------------|
-| 1 | Hacker News / `r/MachineLearning` | Sees a comment recommending Foundry/7 over a competitor. Clicks. |
+| 1 | Hacker News / `r/MachineLearning` | Sees a comment recommending Mintset over a competitor. Clicks. |
 | 2 | `synthetic-data-factory.prin7r.com#use-cases` | "Cold-start" card resonates. Reads bullet 1 ("First-touch fine-tunes") and bullet 3 ("Cold-start RLHF prompts"). |
 | 3 | `#api` | Reads Python SDK. Pastes the snippet into a Cursor scratchpad. |
 | 4 | `#pricing` | Bench tier ($480) is right-sized for "see if this works". Clicks "Start a bench run →". |
@@ -47,12 +47,12 @@ real patient data cross the table.
 
 | Step | Where | What happens |
 |------|-------|--------------|
-| 1 | LinkedIn | Reads a Foundry/7 post on HIPAA-style synthetic clones. |
+| 1 | LinkedIn | Reads a Mintset post on HIPAA-style synthetic clones. |
 | 2 | `synthetic-data-factory.prin7r.com#use-cases` | Card 04 ("Privacy-safe clones") is exactly her need. |
 | 3 | `#manifest` | Spots the "client-owned output" panel. Reads the FAQ (Q3 "Do you train on my schema?") — answer is no. |
 | 4 | `#pricing` | Selects **Enterprise quarter** ($12,000) — needs human-in-the-loop adjudication and a regulator-ready audit pack. |
 | 5 | `mailto:foundry@…` | Emails for a wire/EUR invoice — she does not pay in crypto. |
-| 6 | Foundry/7 ops | Cuts a manual EUR invoice; Plisio fallback offered if she changes her mind. |
+| 6 | Mintset ops | Cuts a manual EUR invoice; Plisio fallback offered if she changes her mind. |
 | 7 | Day 5 | Schema iteration: 4 calls with foundry team. Compliance officer signs off. |
 | 8 | Day 12 | First clone lands (250k records). Manifest includes the SOC-friendly attestation pack. |
 | 9 | Day 15 | Demo to vendor. Vendor signs a follow-on contract. Elena renews the quarter. |
