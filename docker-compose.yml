@@ -1,4 +1,59 @@
 services:
+  # ─── Postgres ─────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: synthtable-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: synthtable
+      POSTGRES_PASSWORD: synthtable
+      POSTGRES_DB: synthtable
+    expose:
+      - "5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U synthtable -d synthtable"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ─── NATS ─────────────────────────────────────────────────────────────
+  nats:
+    image: nats:2-alpine
+    container_name: synthtable-nats
+    restart: unless-stopped
+    command: "-js"
+    expose:
+      - "4222"
+    healthcheck:
+      test: ["CMD", "nats", "server", "check", "connection"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ─── API ──────────────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile.api
+    image: synthtable-api:latest
+    container_name: synthtable-api
+    restart: unless-stopped
+    expose:
+      - "3001"
+    environment:
+      NODE_ENV: production
+      PORT: "3001"
+      DATABASE_URL: postgres://synthtable:synthtable@postgres:5432/synthtable
+      NATS_URL: nats://nats:4222
+    depends_on:
+      postgres:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+
+  # ─── Landing ──────────────────────────────────────────────────────────
   landing:
     build:
       context: .
@@ -16,3 +71,6 @@ services:
       - "traefik.http.routers.synthetic-data-factory.entrypoints=websecure"
       - "traefik.http.routers.synthetic-data-factory.tls.certresolver=letsencrypt"
       - "traefik.http.services.synthetic-data-factory.loadbalancer.server.port=3000"
+
+volumes:
+  pgdata:

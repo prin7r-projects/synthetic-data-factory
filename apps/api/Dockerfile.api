@@ -1,0 +1,19 @@
+# Multistage build for SynthTable API (Bun + Hono)
+# Reference: oven/bun Docker examples
+FROM oven/bun:1.2-alpine AS deps
+WORKDIR /app
+COPY apps/api/package.json apps/api/bun.lock* ./
+RUN bun install --production=false
+
+FROM oven/bun:1.2-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production \
+    HOST=0.0.0.0 \
+    PORT=3001
+RUN addgroup -g 1001 -S synthtable && adduser -S synthtable -u 1001 -G synthtable
+COPY --from=deps /app/node_modules ./node_modules
+COPY apps/api/src ./src
+COPY apps/api/drizzle.config.ts apps/api/tsconfig.json ./
+USER synthtable
+EXPOSE 3001
+CMD ["bun", "run", "src/index.ts"]
