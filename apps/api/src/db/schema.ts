@@ -21,6 +21,7 @@ export const runStatusEnum = pgEnum("run_status", [
   "stamping",
   "done",
   "failed",
+  "paused_for_review",
 ]);
 
 // ─── Tables ──────────────────────────────────────────────────────────────────
@@ -48,10 +49,15 @@ export const runs = pgTable(
       .references(() => users.id, { onDelete: "cascade" }),
     status: runStatusEnum("status").notNull().default("pending"),
 
-    // Input declarations
-    schemaSpec: jsonb("schema_spec").notNull(), // { tables: [...], constraints: {...}, relationships: [...] }
-    biasProfile: jsonb("bias_profile").default({}), // { distributions: {...}, edgeCaseDensity: number }
+    // Vertical & input
+    vertical: varchar("vertical", { length: 64 }),
+    schemaSpec: jsonb("schema_spec").notNull(), // raw customer input (JSON or parsed YAML)
+    schemaYaml: text("schema_yaml"), // original YAML if provided
+    ir: jsonb("ir"), // compiled intermediate representation
+    biasProfile: jsonb("bias_profile").default({}),
     volume: integer("volume").notNull().default(1_000), // target row count
+    targetRows: integer("target_rows"),
+    seed: integer("seed"),
 
     // Output artifacts
     artifactS3Path: varchar("artifact_s3_path", { length: 1024 }),
@@ -60,9 +66,15 @@ export const runs = pgTable(
 
     // Stats
     rowCount: integer("row_count"),
+    passedRows: integer("passed_rows"),
+    rejectedRows: integer("rejected_rows"),
     constraintPassed: integer("constraint_passed"),
     constraintFailed: integer("constraint_failed"),
     elapsedMs: integer("elapsed_ms"),
+
+    // Model provenance
+    generatorModel: varchar("generator_model", { length: 64 }),
+    judgeModel: varchar("judge_model", { length: 64 }),
 
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
@@ -74,6 +86,32 @@ export const runs = pgTable(
     index("runs_user_id_idx").on(table.userId),
     index("runs_status_idx").on(table.status),
     index("runs_created_at_idx").on(table.createdAt),
+  ],
+);
+
+/** Generated rows for a run. */
+export const rows = pgTable(
+  "rows",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    runId: uuid("run_id")
+      .notNull()
+      .references(() => runs.id, { onDelete: "cascade" }),
+    idx: integer("idx").notNull(),
+    payload: jsonb("payload").notNull(), // the generated row object
+    generatorModel: varchar("generator_model", { length: 64 }),
+    judgeModel: varchar("judge_model", { length: 64 }),
+    judgeConfidence: integer("judge_confidence"), // stored as integer 0-1000 (scale by 1000)
+    passed: boolean("passed").notNull().default(false),
+    rejectionReason: text("rejection_reason"),
+    promptInjectionDetected: boolean("prompt_injection_detected").default(false),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => [
+    index("rows_run_id_idx").on(table.runId),
+    index("rows_run_id_idx_unique").on(table.runId, table.idx),
   ],
 );
 

@@ -19,6 +19,8 @@ export const Subjects = {
   FORGE_RUN_FAILED: "synthtable.forge.run.failed",
   /** Heartbeat from the forge worker. */
   FORGE_WORKER_HEARTBEAT: "synthtable.forge.worker.heartbeat",
+  /** Run progress updates (payload: ForgeProgress). */
+  RUN_PROGRESS: "synthtable.runs.progress",
 } as const;
 
 /** Get or create the NATS connection. */

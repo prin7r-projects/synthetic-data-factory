@@ -25,9 +25,18 @@ const envSchema = z.object({
   NATS_USER: z.string().optional(),
   NATS_PASS: z.string().optional(),
 
-  // Forge (forward-compat — not used by Phase 1 stub)
+  // LLM providers
+  ANTHROPIC_API_KEY: z.string().min(1).optional(),
+  GLM_API_KEY: z.string().min(1).optional(),
+  GLM_BASE_URL: z.string().url().optional().default("https://api.z-ai.io/v1"),
+
+  // Forge
   FORGE_CONCURRENCY: z.coerce.number().int().positive().default(4),
   FORGE_TIMEOUT_MS: z.coerce.number().int().positive().default(600_000),
+  FORGE_BATCH_SIZE: z.coerce.number().int().positive().default(10),
+
+  // Generator model preference
+  GENERATOR_MODEL: z.string().default("claude-sonnet-4-20250514"),
 });
 
 export type Env = z.infer<typeof envSchema>;

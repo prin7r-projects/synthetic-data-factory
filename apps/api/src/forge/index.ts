@@ -2,13 +2,19 @@ import { z } from "zod";
 import { getDb, schema } from "../db";
 import { publishJson, Subjects } from "../nats";
 import { eq } from "drizzle-orm";
+import { compileSchema, CompileException } from "../compiler";
+import { schemaIRSchema } from "../compiler/schema";
+import { executeForgeRun } from "./worker";
+import type { SchemaIR } from "../compiler/schema";
 
 // ─── Zod schemas for the forge API ──────────────────────────────────────────
 
 export const forgeRequestSchema = z.object({
-  schemaSpec: z.record(z.unknown()),
+  schemaSpec: z.record(z.unknown()).optional(),
+  schemaYaml: z.string().optional(),
   biasProfile: z.record(z.unknown()).optional().default({}),
   volume: z.number().int().positive().default(1_000),
+  seed: z.number().int().optional(),
 });
 
 export type ForgeRequest = z.infer<typeof forgeRequestSchema>;
@@ -19,14 +25,54 @@ export interface ForgeResponse {
   submittedAt: string;
 }
 
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
+function resolveSchemaIR(input: ForgeRequest): SchemaIR {
+  if (input.schemaYaml) {
+    const result = compileSchema(input.schemaYaml);
+    if (!result.success) {
+      throw new CompileException(result.errors, 422);
+    }
+    return result.ir;
+  }
+
+  if (input.schemaSpec) {
+    const withDefaults =
+      typeof input.schemaSpec === "object" &&
+      input.schemaSpec !== null &&
+      !("version" in input.schemaSpec)
+        ? { version: "synthtable-schema-v1", ...input.schemaSpec }
+        : input.schemaSpec;
+
+    const parsed = schemaIRSchema.safeParse(withDefaults);
+    if (!parsed.success) {
+      const errors = parsed.error.issues.map((issue) => ({
+        path: issue.path.join("."),
+        message: issue.message,
+        code: issue.code,
+      }));
+      throw new CompileException(errors, 422);
+    }
+    return parsed.data;
+  }
+
+  throw new CompileException(
+    [
+      {
+        path: "schema",
+        message: "Either schemaYaml or schemaSpec is required",
+        code: "required",
+      },
+    ],
+    422,
+  );
+}
+
 // ─── Forge service ──────────────────────────────────────────────────────────
 
 /**
  * Submit a new forge run. Creates a run record, publishes a NATS event,
- * and returns the run ID for polling.
- *
- * Phase 1 stub: marks the run as "done" immediately with a stub manifest.
- * Phase 2+ will dispatch to real forge workers via NATS.
+ * and dispatches to the forge worker for real generation.
  */
 export async function submitForgeRun(
   userId: string,
@@ -34,15 +80,23 @@ export async function submitForgeRun(
 ): Promise<ForgeResponse> {
   const db = getDb();
 
+  // Resolve/compile schema IR
+  const ir = await resolveSchemaIR(input);
+
   // Create the run record
   const [run] = await db
     .insert(schema.runs)
     .values({
       userId,
       status: "pending",
-      schemaSpec: input.schemaSpec,
+      vertical: ir.vertical,
+      schemaSpec: input.schemaSpec ?? {},
+      schemaYaml: input.schemaYaml ?? null,
+      ir,
       biasProfile: input.biasProfile,
       volume: input.volume,
+      targetRows: input.volume,
+      seed: input.seed ?? Math.floor(Math.random() * 1_000_000),
     })
     .returning({ id: schema.runs.id, status: schema.runs.status });
 
@@ -52,92 +106,42 @@ export async function submitForgeRun(
     event: "run.created",
     payload: {
       volume: input.volume,
-      schemaKeys: Object.keys(input.schemaSpec),
+      vertical: ir.vertical,
+      schemaKeys: Object.keys(ir.tables[0] ?? {}),
     },
   });
 
-  // Publish NATS event for forge workers (Phase 1: stub; Phase 2: real workers)
+  // Publish NATS event for forge workers
   await publishJson(Subjects.FORGE_RUN_REQUESTED, {
     runId: run.id,
     userId,
-    schemaSpec: input.schemaSpec,
+    schemaIR: ir,
     biasProfile: input.biasProfile,
-    volume: input.volume,
+    targetRows: input.volume,
+    seed: input.seed ?? Math.floor(Math.random() * 1_000_000),
   });
 
-  // Phase 1 stub: immediately "complete" the run with a stub manifest
-  await completeRunStub(run.id);
+  // Phase 2: dispatch directly in-process (extract to worker process in Phase 3+)
+  executeForgeRun({
+    runId: run.id,
+    userId,
+    schemaIR: ir,
+    biasProfile: input.biasProfile,
+    targetRows: input.volume,
+    seed: input.seed ?? Math.floor(Math.random() * 1_000_000),
+  }).catch((err) => {
+    console.error(`❌ Forge worker failed for run ${run.id}:`, err);
+    publishJson(Subjects.FORGE_RUN_FAILED, {
+      runId: run.id,
+      error: err instanceof Error ? err.message : "Unknown error",
+    }).catch(() => {});
+  });
 
   return {
     runId: run.id,
     status: "pending",
     submittedAt: new Date().toISOString(),
   };
-}
-
-/**
- * Phase 1 stub: simulate forging and mark the run as done.
- * In Phase 2, this logic will live in a separate forge worker process
- * that consumes NATS events.
- */
-async function completeRunStub(runId: string): Promise<void> {
-  const db = getDb();
-  const now = new Date();
-  const elapsedMs = Math.floor(Math.random() * 500) + 50; // 50–550ms stub
-
-  // Simulate forge phases
-  const phases = ["compiling", "forging", "adjudicating", "stamping"] as const;
-  for (const phase of phases) {
-    await db
-      .update(schema.runs)
-      .set({ status: phase })
-      .where(eq(schema.runs.id, runId));
-
-    await db.insert(schema.auditLog).values({
-      runId,
-      event: `run.${phase}`,
-      payload: { phase, timestamp: new Date().toISOString() },
-    });
-  }
-
-  // Mark as done with stub artifacts
-  const stubManifest = {
-    pipeline: "synthtable-forge@0.1.0-stub",
-    seed: 42,
-    modelVersions: { generator: "stub@0.1.0", adjudicator: "stub@0.1.0" },
-    lineageHash: `sha256:stub-${runId}`,
-    constraintResults: { passed: 0, failed: 0, total: 0 },
-    biasDriftSigma: 0,
-    elapsedMs,
-    reproducibility: "not-verified-phase-1-stub",
-  };
-
-  await db
-    .update(schema.runs)
-    .set({
-      status: "done",
-      manifestHash: `sha256:stub-${runId}`,
-      manifest: stubManifest,
-      rowCount: 0,
-      constraintPassed: 0,
-      constraintFailed: 0,
-      elapsedMs,
-      completedAt: now,
-    })
-    .where(eq(schema.runs.id, runId));
-
-  await db.insert(schema.auditLog).values({
-    runId,
-    event: "run.completed",
-    payload: { manifestHash: `sha256:stub-${runId}` },
-  });
-
-  // Notify completion
-  await publishJson(Subjects.FORGE_RUN_COMPLETED, {
-    runId,
-    manifestHash: `sha256:stub-${runId}`,
-    elapsedMs,
-  });
 }
 
 /**
@@ -152,4 +156,18 @@ export async function getRunStatus(runId: string) {
     .limit(1);
 
   return run ?? null;
+}
+
+/**
+ * Get generated rows for a run.
+ */
+export async function getRunRows(runId: string, limit = 100, offset = 0) {
+  const db = getDb();
+  return db
+    .select()
+    .from(schema.rows)
+    .where(eq(schema.rows.runId, runId))
+    .orderBy(schema.rows.idx)
+    .limit(limit)
+    .offset(offset);
 }
