@@ -25,10 +25,10 @@ const envSchema = z.object({
   NATS_USER: z.string().optional(),
   NATS_PASS: z.string().optional(),
 
-  // LLM providers
-  ANTHROPIC_API_KEY: z.string().min(1).optional(),
-  GLM_API_KEY: z.string().min(1).optional(),
-  GLM_BASE_URL: z.string().url().optional().default("https://api.z-ai.io/v1"),
+  // LLM providers (empty string = not set)
+  ANTHROPIC_API_KEY: z.preprocess((v) => (v === "" ? undefined : v), z.string().min(1).optional()),
+  GLM_API_KEY: z.preprocess((v) => (v === "" ? undefined : v), z.string().min(1).optional()),
+  GLM_BASE_URL: z.string().url().optional().default("https://open.bigmodel.cn/api/paas/v4"),
 
   // Forge
   FORGE_CONCURRENCY: z.coerce.number().int().positive().default(4),
